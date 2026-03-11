@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NGL — Tableau de bord commercial</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --sidebar-bg: #0F1923;
+  --sidebar-hover: #1A2A3A;
+  --sidebar-active: #1E3448;
+  --sidebar-text: #8DA4B8;
+  --sidebar-text-active: #FFFFFF;
+  --accent: #2E86C1;
+  --accent2: #1ABC9C;
+  --accent-orange: #E67E22;
+  --accent-red: #E74C3C;
+  --bg: #F0F3F7;
+  --card-bg: #FFFFFF;
+  --text-primary: #1C2833;
+  --text-secondary: #566573;
+  --text-muted: #8395A7;
+  --border: #E2E8F0;
+  --success: #27AE60;
+  --warning: #F39C12;
+  --danger: #E74C3C;
+  --sidebar-width: 260px;
+  --header-height: 64px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== SIDEBAR ========== */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: var(--header-height);
+}
+
+.sidebar-logo {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700; font-size: 14px; color: #fff;
+  flex-shrink: 0;
+}
+
+/* Logo image: décommenter et remplacer src pour utiliser votre logo */
+.sidebar-logo img {
+  width: 100%; height: 100%; object-fit: contain; border-radius: 10px;
+}
+
+.sidebar-brand {
+  display: flex; flex-direction: column;
+}
+.sidebar-brand-name {
+  font-weight: 700; font-size: 15px; color: #fff; letter-spacing: 0.5px;
+}
+.sidebar-brand-sub {
+  font-size: 11px; color: var(--sidebar-text); margin-top: 2px;
+}
+
+.sidebar-nav {
+  padding: 16px 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--sidebar-text);
+  padding: 16px 12px 8px;
+  opacity: 0.6;
+}
+
+.nav-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 14px;
+  border-radius: 8px;
+  color: var(--sidebar-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px; font-weight: 500;
+  user-select: none;
+}
+.nav-item:hover { background: var(--sidebar-hover); color: #dce6f0; }
+.nav-item.active {
+  background: var(--sidebar-active);
+  color: var(--sidebar-text-active);
+}
+.nav-item.active .nav-icon { color: var(--accent); }
+.nav-icon { font-size: 18px; width: 22px; text-align: center; flex-shrink: 0; }
+.nav-badge {
+  margin-left: auto;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px; font-weight: 700;
+  padding: 2px 8px; border-radius: 10px;
+}
+
+.sidebar-footer {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center; gap: 12px;
+}
+.sidebar-avatar {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, #2E86C1, #1ABC9C);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; font-size: 13px;
+}
+.sidebar-user-name { font-size: 13px; color: #fff; font-weight: 600; }
+.sidebar-user-role { font-size: 11px; color: var(--sidebar-text); }
+
+/* ========== MAIN ========== */
+.main {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.topbar {
+  height: var(--header-height);
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px;
+  position: sticky; top: 0; z-index: 50;
+}
+.topbar-title { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+.topbar-right { display: flex; align-items: center; gap: 16px; }
+.topbar-date { font-size: 13px; color: var(--text-secondary); }
+.topbar-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 6px rgba(39,174,96,0.4);
+}
+
+.mobile-toggle {
+  display: none;
+  background: none; border: none;
+  font-size: 24px; color: var(--text-primary); cursor: pointer;
+  margin-right: 12px;
+}
+
+.content { padding: 28px 32px; flex: 1; }
+
+/* ========== KPI CARDS ========== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.kpi-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  transition: box-shadow 0.2s;
+}
+.kpi-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.kpi-label { font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+.kpi-value { font-family: 'Space Mono', monospace; font-size: 28px; font-weight: 700; color: var(--text-primary); }
+.kpi-sub { font-size: 12px; color: var(--text-secondary); margin-top: 6px; display: flex; align-items: center; gap: 4px; }
+.kpi-up { color: var(--success); }
+.kpi-down { color: var(--danger); }
+.kpi-neutral { color: var(--text-muted); }
+
+/* ========== TABLES ========== */
+.card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.card-header {
+  padding: 18px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+.card-title { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+.card-body { padding: 0; }
+.card-body-padded { padding: 24px; }
+
+table { width: 100%; border-collapse: collapse; }
+thead th {
+  padding: 12px 16px;
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.8px;
+  color: var(--text-muted);
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+  background: #FAFBFC;
+}
+tbody td {
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: #F8FAFC; }
+
+/* Status badges */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.3px;
+}
+.badge-detected { background: #EBF5FB; color: var(--accent); }
+.badge-qualified { background: #E8F8F5; color: var(--accent2); }
+.badge-submitted { background: #FEF9E7; color: #B7950B; }
+.badge-negotiation { background: #FEF5E7; color: var(--accent-orange); }
+.badge-won { background: #EAFAF1; color: var(--success); }
+.badge-lost { background: #FDEDEC; color: var(--danger); }
+
+.das-tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.das-1 { background: #FADBD8; color: #C0392B; }
+.das-2 { background: #D6EAF8; color: #2874A6; }
+.das-3 { background: #D5F5E3; color: #1E8449; }
+.das-4 { background: #FEF5E7; color: #B7950B; }
+
+/* ========== RISK CARDS ========== */
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.risk-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  padding: 18px 20px;
+  border-left: 4px solid;
+  transition: box-shadow 0.2s;
+}
+.risk-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.risk-card.risk-critical { border-left-color: var(--danger); }
+.risk-card.risk-high { border-left-color: var(--warning); }
+.risk-card.risk-moderate { border-left-color: var(--accent); }
+.risk-card.risk-low { border-left-color: var(--success); }
+
+.risk-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.risk-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+.risk-level { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+.risk-level-critical { background: #FDEDEC; color: var(--danger); }
+.risk-level-high { background: #FEF9E7; color: #B7950B; }
+.risk-level-moderate { background: #EBF5FB; color: var(--accent); }
+.risk-level-low { background: #EAFAF1; color: var(--success); }
+
+.risk-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 10px; }
+.risk-indicator { font-size: 11px; color: var(--text-muted); }
+.risk-indicator strong { color: var(--text-primary); }
+
+/* ========== PROGRESS BARS ========== */
+.progress-bar-bg {
+  width: 100%; height: 6px; background: #E2E8F0; border-radius: 3px; overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%; border-radius: 3px; transition: width 0.6s ease;
+}
+
+/* ========== CHART ========== */
+.chart-container { position: relative; height: 280px; }
+.charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+
+/* ========== TABS (inline for Performance) ========== */
+.inline-tabs { display: flex; gap: 0; margin-bottom: 20px; }
+.inline-tab {
+  padding: 8px 18px; font-size: 13px; font-weight: 600;
+  border: 1px solid var(--border); background: #fff;
+  cursor: pointer; color: var(--text-secondary);
+  transition: all 0.15s;
+}
+.inline-tab:first-child { border-radius: 8px 0 0 8px; }
+.inline-tab:last-child { border-radius: 0 8px 8px 0; }
+.inline-tab.active {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  margin-left: var(--sidebar-width);
+  padding: 16px 32px;
+  background: var(--card-bg);
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: var(--text-muted);
+}
+
+/* ========== HIDDEN SECTIONS ========== */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ========== OVERLAY ========== */
+.sidebar-overlay {
+  display: none;
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 99;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1100px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .charts-row { grid-template-columns: 1fr; }
+  .risk-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-overlay.open { display: block; }
+  .main { margin-left: 0; }
+  .footer { margin-left: 0; }
+  .mobile-toggle { display: block; }
+  .content { padding: 20px 16px; }
+  .topbar { padding: 0 16px; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+  .kpi-value { font-size: 22px; }
+  table { font-size: 12px; }
+  thead th, tbody td { padding: 10px 10px; }
+}
+
+@media (max-width: 480px) {
+  .kpi-grid { grid-template-columns: 1fr; }
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.tab-content.active { animation: fadeIn 0.3s ease; }
+.kpi-card { animation: fadeIn 0.4s ease backwards; }
+.kpi-card:nth-child(2) { animation-delay: 0.05s; }
+.kpi-card:nth-child(3) { animation-delay: 0.1s; }
+.kpi-card:nth-child(4) { animation-delay: 0.15s; }
+</style>
+</head>
+<body>
+
+<!-- OVERLAY MOBILE -->
+<div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">
+      <!-- Remplacez le texte par <img src="votre-logo.png" alt="NGL"> -->
+      NGL
+    </div>
+    <div class="sidebar-brand">
+      <span class="sidebar-brand-name">Neurogenia-Lumen</span>
+      <span class="sidebar-brand-sub">Tableau de bord commercial</span>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="sidebar-section-label">Navigation</div>
+    <div class="nav-item active" data-tab="pipeline" onclick="switchTab('pipeline', this)">
+      <span class="nav-icon">📊</span>
+      <span>Pipeline AO</span>
+      <span class="nav-badge">6</span>
+    </div>
+    <div class="nav-item" data-tab="performance" onclick="switchTab('performance', this)">
+      <span class="nav-icon">📈</span>
+      <span>Performance</span>
+    </div>
+    <div class="nav-item" data-tab="risques" onclick="switchTab('risques', this)">
+      <span class="nav-icon">⚠️</span>
+      <span>Risques</span>
+      <span class="nav-badge" style="background:var(--warning)">3</span>
+    </div>
+
+    <div class="sidebar-section-label" style="margin-top:16px">Références</div>
+    <div class="nav-item" onclick="window.open('#','_blank')" style="opacity:0.6">
+      <span class="nav-icon">📁</span>
+      <span>Dossier Bloc 1</span>
+    </div>
+    <div class="nav-item" onclick="window.open('#','_blank')" style="opacity:0.6">
+      <span class="nav-icon">📁</span>
+      <span>Dossier Bloc 2</span>
+    </div>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-avatar">CP</div>
+    <div>
+      <div class="sidebar-user-name">Chef de Projet</div>
+      <div class="sidebar-user-role">Direction Stratégie & Marché</div>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div style="display:flex;align-items:center">
+      <button class="mobile-toggle" onclick="toggleSidebar()">☰</button>
+      <span class="topbar-title" id="topbar-title">Pipeline des appels d'offres</span>
+    </div>
+    <div class="topbar-right">
+      <span class="topbar-date" id="current-date"></span>
+      <div class="topbar-dot" title="Système opérationnel"></div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- ====== TAB: PIPELINE ====== -->
+    <div class="tab-content active" id="tab-pipeline">
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">AO en cours</div>
+          <div class="kpi-value">6</div>
+          <div class="kpi-sub kpi-up">↑ +2 ce trimestre</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Valeur pipeline</div>
+          <div class="kpi-value">33,2 M€</div>
+          <div class="kpi-sub kpi-neutral">4 DAS couverts</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Taux de conversion</div>
+          <div class="kpi-value">28 %</div>
+          <div class="kpi-sub kpi-up">↑ +3 pts vs T4 2024</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Prochaine échéance</div>
+          <div class="kpi-value" style="font-size:20px">30 juin</div>
+          <div class="kpi-sub kpi-neutral">AO HospitalNet BE</div>
+        </div>
+      </div>
+
+      <!-- Pipeline par statut -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Pipeline des appels d'offres par DAS</span>
+          <span style="font-size:12px;color:var(--text-muted)">Mise à jour : T2 2025</span>
+        </div>
+        <div class="card-body" style="overflow-x:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Appel d'offres</th>
+                <th>DAS</th>
+                <th>Pays</th>
+                <th>Montant</th>
+                <th>Statut</th>
+                <th>Échéance</th>
+                <th>Probabilité</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Triage CCAM</strong> — HospitalNet</td>
+                <td><span class="das-tag das-1">DAS 1 Santé</span></td>
+                <td>🇧🇪 Belgique</td>
+                <td><strong>8,5 M€</strong></td>
+                <td><span class="badge badge-submitted">Offre soumise</span></td>
+                <td>30 juin 2025</td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <div class="progress-bar-bg" style="width:80px"><div class="progress-bar-fill" style="width:70%;background:var(--accent2)"></div></div>
+                    <span style="font-size:12px;font-weight:600">70 %</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Orientation prédictive</strong> — Min. Éducation</td>
+                <td><span class="das-tag das-2">DAS 2 Éducation</span></td>
+                <td>🇫🇷 France</td>
+                <td><strong>15 M€</strong></td>
+                <td><span class="badge badge-qualified">Qualifié</span></td>
+                <td>T3 2025</td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <div class="progress-bar-bg" style="width:80px"><div class="progress-bar-fill" style="width:55%;background:var(--accent)"></div></div>
+                    <span style="font-size:12px;font-weight:600">55 %</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Aide rédaction jugements</strong> — Agence fédérale</td>
+                <td><span class="das-tag das-3">DAS 3 Justice</span></td>
+                <td>🇩🇪 Allemagne</td>
+                <td><strong>6,2 M€</strong></td>
+                <td><span class="badge badge-detected">Détecté</span></td>
+                <td>T1 2026</td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <div class="progress-bar-bg" style="width:80px"><div class="progress-bar-fill" style="width:35%;background:var(--warning)"></div></div>
+                    <span style="font-size:12px;font-weight:600">35 %</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Ville durable IA</strong> — Chambéry Agglo</td>
+                <td><span class="das-tag das-4">DAS 4 Collectivités</span></td>
+                <td>🇫🇷 France</td>
+                <td><strong>2,8 M€</strong></td>
+                <td><span class="badge badge-detected">Détecté</span></td>
+                <td>T2 2027</td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <div class="progress-bar-bg" style="width:80px"><div class="progress-bar-fill" style="width:20%;background:var(--text-muted)"></div></div>
+                    <span style="font-size:12px;font-weight:600">20 %</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>EaaS KYC</strong> — Banque Mutualiste</td>
+                <td><span class="das-tag das-4">EaaS</span></td>
+                <td>🇫🇷 France</td>
+                <td><strong>420 k€</strong></td>
+                <td><span class="badge badge-negotiation">Négociation</span></td>
+                <td>T3 2025</td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <div class="progress-bar-bg" style="width:80px"><div class="progress-bar-fill" style="width:80%;background:var(--success)"></div></div>
+                    <span style="font-size:12px;font-weight:600">80 %</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>IA sobriété énergétique</strong> — Logroño</td>
+                <td><span class="das-tag das-4">DAS 4 Collectivités</span></td>
+                <td>🇪🇸 Espagne</td>
+                <td><strong>1,2 M€</strong></td>
+                <td><span class="badge badge-qualified">Qualifié</span></td>
+                <td>T4 2025</td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <div class="progress-bar-bg" style="width:80px"><div class="progress-bar-fill" style="width:40%;background:var(--warning)"></div></div>
+                    <span style="font-size:12px;font-weight:600">40 %</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Pipeline funnel visuel -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Répartition du pipeline par statut</span>
+        </div>
+        <div class="card-body-padded">
+          <div style="display:flex;gap:8px;align-items:end;height:48px">
+            <div style="flex:2;background:#EBF5FB;border-radius:6px;height:100%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--accent)">Détecté (2)</div>
+            <div style="flex:2;background:#E8F8F5;border-radius:6px;height:85%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--accent2)">Qualifié (2)</div>
+            <div style="flex:1;background:#FEF9E7;border-radius:6px;height:70%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#B7950B">Soumis (1)</div>
+            <div style="flex:1;background:#FEF5E7;border-radius:6px;height:55%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--accent-orange)">Négo (1)</div>
+            <div style="flex:0.5;background:#EAFAF1;border-radius:6px;height:40%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--success)">Gagné (0)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== TAB: PERFORMANCE ====== -->
+    <div class="tab-content" id="tab-performance">
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">CA 2025 (cible)</div>
+          <div class="kpi-value">14,5 M€</div>
+          <div class="kpi-sub kpi-up">↑ +22 % vs 2024</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">CA réalisé YTD</div>
+          <div class="kpi-value">3,8 M€</div>
+          <div class="kpi-sub kpi-neutral">26 % de l'objectif</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Comptes actifs</div>
+          <div class="kpi-value">14</div>
+          <div class="kpi-sub kpi-neutral">Cible 2025 : 20</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Marge brute</div>
+          <div class="kpi-value">47,2 %</div>
+          <div class="kpi-sub kpi-up">↑ Objectif > 45 %</div>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="charts-row">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Trajectoire CA par DAS (M€)</span>
+          </div>
+          <div class="card-body-padded">
+            <div class="chart-container">
+              <canvas id="chartCA"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Progression des comptes actifs</span>
+          </div>
+          <div class="card-body-padded">
+            <div class="chart-container">
+              <canvas id="chartClients"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI Table -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">KPI opérationnels — Suivi mensuel</span>
+        </div>
+        <div class="card-body" style="overflow-x:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Indicateur</th>
+                <th>Cible</th>
+                <th>Réalisé</th>
+                <th>Statut</th>
+                <th>Tendance</th>
+                <th>Responsable</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Taux de conversion AO</strong></td>
+                <td>> 25 %</td>
+                <td>28 %</td>
+                <td><span class="badge badge-won">✓ Atteint</span></td>
+                <td class="kpi-up" style="font-weight:600">↑ +3 pts</td>
+                <td>Resp. AO</td>
+              </tr>
+              <tr>
+                <td><strong>Cycle de vente moyen</strong></td>
+                <td>< 180 jours</td>
+                <td>162 jours</td>
+                <td><span class="badge badge-won">✓ Atteint</span></td>
+                <td class="kpi-up" style="font-weight:600">↓ -12j</td>
+                <td>Chefs de projet</td>
+              </tr>
+              <tr>
+                <td><strong>Pipeline qualifié</strong></td>
+                <td>> 2x CA (29 M€)</td>
+                <td>33,2 M€</td>
+                <td><span class="badge badge-won">✓ Atteint</span></td>
+                <td class="kpi-up" style="font-weight:600">↑ +15 %</td>
+                <td>A. Riche</td>
+              </tr>
+              <tr>
+                <td><strong>Utilisation CRM</strong></td>
+                <td>> 85 %</td>
+                <td>72 %</td>
+                <td><span class="badge badge-submitted">⚡ Attention</span></td>
+                <td class="kpi-down" style="font-weight:600">↑ +8 pts</td>
+                <td>Admin CRM</td>
+              </tr>
+              <tr>
+                <td><strong>NPS clients</strong></td>
+                <td>> 50</td>
+                <td>54</td>
+                <td><span class="badge badge-won">✓ Atteint</span></td>
+                <td class="kpi-up" style="font-weight:600">↑ +4 pts</td>
+                <td>Support / UX</td>
+              </tr>
+              <tr>
+                <td><strong>Badge GreenMeter</strong></td>
+                <td>100 % vert</td>
+                <td>100 %</td>
+                <td><span class="badge badge-won">✓ Atteint</span></td>
+                <td class="kpi-neutral" style="font-weight:600">= Stable</td>
+                <td>R&D / GreenMeter</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== TAB: RISQUES ====== -->
+    <div class="tab-content" id="tab-risques">
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Risques critiques</div>
+          <div class="kpi-value" style="color:var(--danger)">2</div>
+          <div class="kpi-sub kpi-down">RH + Réglementation</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Risques élevés</div>
+          <div class="kpi-value" style="color:var(--warning)">3</div>
+          <div class="kpi-sub kpi-neutral">Budget, Low-cost, CRM</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Risques modérés</div>
+          <div class="kpi-value" style="color:var(--accent)">2</div>
+          <div class="kpi-sub kpi-neutral">Techno, Carbone</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Risques faibles</div>
+          <div class="kpi-value" style="color:var(--success)">1</div>
+          <div class="kpi-sub kpi-up">Cybersécurité maîtrisée</div>
+        </div>
+      </div>
+
+      <div class="risk-grid">
+        <div class="risk-card risk-critical">
+          <div class="risk-header">
+            <span class="risk-title">Ressources humaines insuffisantes</span>
+            <span class="risk-level risk-level-critical">Critique</span>
+          </div>
+          <div class="risk-desc">Difficulté à recruter 6 commerciaux dans les délais prévus (T2-T4 2025). Délai moyen de pourvoi : 3-5 mois dans le secteur IA à Grenoble.</div>
+          <div class="risk-indicator"><strong>Indicateur :</strong> Taux de postes vacants, délai de recrutement</div>
+          <div class="risk-indicator" style="margin-top:4px"><strong>Mitigation :</strong> Marque employeur, parcours atypiques, prime cooptation</div>
+        </div>
+
+        <div class="risk-card risk-critical">
+          <div class="risk-header">
+            <span class="risk-title">Évolution réglementaire imprévue</span>
+            <span class="risk-level risk-level-critical">Critique</span>
+          </div>
+          <div class="risk-desc">Nouveaux décrets ou normes IA/HDS modifiant les exigences des AO. ISO 42001 attendue en 2026, ISO 14097-IA en préparation.</div>
+          <div class="risk-indicator"><strong>Indicateur :</strong> Alertes JOUE, CNIL, EU Gazette</div>
+          <div class="risk-indicator" style="margin-top:4px"><strong>Mitigation :</strong> Veille juridique hebdomadaire (C. Deleuil)</div>
+        </div>
+
+        <div class="risk-card risk-high">
+          <div class="risk-header">
+            <span class="risk-title">Concurrence low-cost agressive</span>
+            <span class="risk-level risk-level-high">Élevé</span>
+          </div>
+          <div class="risk-desc">HumanSoft (RO) et clones proposent des offres à 19 500 € sans certification, brouillant le discours éthique auprès des élus.</div>
+          <div class="risk-indicator"><strong>Indicateur :</strong> Analyse bimensuelle des tarifs concurrents</div>
+          <div class="risk-indicator" style="margin-top:4px"><strong>Mitigation :</strong> Battlecard mise à jour trimestriellement</div>
+        </div>
+
+        <div class="risk-card risk-high">
+          <div class="risk-header">
+            <span class="risk-title">Dépassement budget marketing</span>
+            <span class="risk-level risk-level-high">Élevé</span>
+          </div>
+          <div class="risk-desc">Coûts de salons ou campagnes supérieurs aux 350 k€ prévus en 2025 (3 % du CA cible).</div>
+          <div class="risk-indicator"><strong>Indicateur :</strong> Suivi mensuel dépenses vs budget prévu</div>
+          <div class="risk-indicator" style="margin-top:4px"><strong>Mitigation :</strong> Reporting mensuel Direction financière</div>
+        </div>
+
+        <div class="risk-card risk-high">
+          <div class="risk-header">
+            <span class="risk-title">Adoption CRM insuffisante</span>
+            <span class="risk-level risk-level-high">Élevé</span>
+          </div>
+          <div class="risk-desc">Taux d'utilisation actuel à 72 % (cible 85 %). Données partielles impactant la fiabilité du pipeline.</div>
+          <div class="risk-indicator"><strong>Indicateur :</strong> Taux d'utilisation CRM, qualité données</div>
+          <div class="risk-indicator" style="margin-top:4px"><strong>Mitigation :</strong> Formation obligatoire, référent CRM interne</div>
+        </div>
+
+        <div class="risk-card risk-moderate">
+          <div class="risk-header">
+            <span class="risk-title">Obsolescence technologique rapide</span>
+            <span class="risk-level risk-level-moderate">Modéré</span>
+          </div>
+          <div class="risk-desc">Nouveau LLM open-source publié toutes les 12 semaines. Risque de dépassement si la veille R&D ne suit pas.</div>
+          <div class="risk-indicator"><strong>Indicateur :</strong> Veille open-source mensuelle (arXiv, GitLab)</div>
+          <div class="risk-indicator" style="margin-top:4px"><strong>Mitigation :</strong> Labo Louvain, note technique mensuelle (M. Saidi)</div>
+        </div>
+
+        <div class="risk-card risk-moderate">
+          <div class="risk-header">
+            <span class="risk-title">Critiques sur la performance carbone</span>
+            <span class="risk-level risk-level-moderate">Modéré</span>
+          </div>
+          <div class="risk-desc">Remise en cause de la validité des indicateurs RSE par des tiers. GreenMeter actuellement à 0,62 g CO₂ (badge vert).</div>
+          <div class="risk-indicator"><strong>Indicateur :</strong> Revue trimestrielle des rapports GreenMeter</div>
+          <div class="risk-indicator" style="margin-top:4px"><strong>Mitigation :</strong> Certification ISO 14097-IA dès publication (2026)</div>
+        </div>
+
+        <div class="risk-card risk-low">
+          <div class="risk-header">
+            <span class="risk-title">Incident cybersécurité / RGPD</span>
+            <span class="risk-level risk-level-low">Faible</span>
+          </div>
+          <div class="risk-desc">Infrastructure SecNumCloud, score conformité > 95 % (audit trimestriel), chiffrement zéro-trust.</div>
+          <div class="risk-indicator"><strong>Indicateur :</strong> Alertes Prometheus/Grafana, audits trimestriels</div>
+          <div class="risk-indicator" style="margin-top:4px"><strong>Mitigation :</strong> Équipe sécurité (F. Degois), alerte < 30 secondes</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span>© 2025 Neurogenia-Lumen — Direction Stratégie et Marché</span>
+  <span>Confidentiel — Données internes</span>
+</footer>
+
+<script>
+// ====== NAV ======
+function switchTab(tabId, el) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('tab-' + tabId).classList.add('active');
+  el.classList.add('active');
+
+  const titles = {
+    pipeline: "Pipeline des appels d'offres",
+    performance: "Performance commerciale",
+    risques: "Matrice des risques"
+  };
+  document.getElementById('topbar-title').textContent = titles[tabId];
+
+  // Init charts lazily
+  if (tabId === 'performance' && !window.chartsInit) {
+    initCharts();
+    window.chartsInit = true;
+  }
+
+  // Close mobile sidebar
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+
+// ====== DATE ======
+const now = new Date();
+const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+document.getElementById('current-date').textContent = now.toLocaleDateString('fr-FR', opts);
+
+// ====== CHARTS ======
+function initCharts() {
+  // CA stacked bar
+  const ctxCA = document.getElementById('chartCA').getContext('2d');
+  new Chart(ctxCA, {
+    type: 'bar',
+    data: {
+      labels: ['2025', '2026', '2027', '2028'],
+      datasets: [
+        { label: 'Santé', data: [5.5, 7.5, 10, 13], backgroundColor: '#E74C3C', borderRadius: 3 },
+        { label: 'Justice', data: [1.5, 3, 4.5, 6], backgroundColor: '#1ABC9C', borderRadius: 3 },
+        { label: 'Éducation', data: [4, 5.5, 7, 9], backgroundColor: '#2E86C1', borderRadius: 3 },
+        { label: 'Collectivités + EaaS', data: [3.5, 2.6, 2.3, 2.5], backgroundColor: '#E67E22', borderRadius: 3 },
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { size: 11, family: 'DM Sans' }, padding: 16 } },
+        tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y + ' M€' } }
+      },
+      scales: {
+        x: { stacked: true, grid: { display: false }, ticks: { font: { size: 12, family: 'DM Sans', weight: '600' } } },
+        y: { stacked: true, grid: { color: '#F0F3F7' }, ticks: { font: { size: 11, family: 'DM Sans' }, callback: v => v + ' M€' }, title: { display: true, text: "Chiffre d'affaires (M€)", font: { size: 11, family: 'DM Sans' } } }
+      }
+    }
+  });
+
+  // Clients line
+  const ctxCl = document.getElementById('chartClients').getContext('2d');
+  new Chart(ctxCl, {
+    type: 'line',
+    data: {
+      labels: ['2025', '2026', '2027', '2028'],
+      datasets: [{
+        label: 'Comptes actifs',
+        data: [20, 35, 55, 80],
+        borderColor: '#2E86C1',
+        backgroundColor: 'rgba(46,134,193,0.1)',
+        fill: true,
+        tension: 0.3,
+        borderWidth: 3,
+        pointRadius: 6,
+        pointBackgroundColor: '#2E86C1',
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ctx.parsed.y + ' clients actifs' } },
+        annotation: {}
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 12, family: 'DM Sans', weight: '600' } } },
+        y: { min: 0, max: 100, grid: { color: '#F0F3F7' }, ticks: { font: { size: 11, family: 'DM Sans' } }, title: { display: true, text: 'Clients actifs', font: { size: 11, family: 'DM Sans' } } }
+      }
+    }
+  });
+}
+</script>
+
+</body>
+</html>
