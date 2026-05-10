@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NGL — Tableau de bord commercial</title>
+<title>NGL - Tableau de bord</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js">
+
+</script>
 <style>
 :root {
   --sidebar-bg: #0F1923;
@@ -621,6 +623,12 @@ tbody tr:hover { background: #F8FAFC; }
       <span class="nav-badge" style="background:var(--warning)">3</span>
     </div>
 
+    <div class="sidebar-section-label">Pilotage</div>
+    <div class="nav-item" data-tab="crm" onclick="switchTab('crm', this)">
+      <span class="nav-icon">👥</span>
+      <span>Suivi collaborateurs</span>
+    </div>
+
     <div class="sidebar-section-label">Communication</div>
     <div class="nav-item" data-tab="plancom" onclick="switchTab('plancom', this)">
       <span class="nav-icon">📣</span>
@@ -700,7 +708,7 @@ tbody tr:hover { background: #F8FAFC; }
             </thead>
             <tbody>
               <tr>
-                <td><strong>Triage CCAM</strong> — HospitalNet</td>
+                <td><strong>Triage CCAM</strong> - HospitalNet</td>
                 <td><span class="das-tag das-1">DAS 1 Santé</span></td>
                 <td>🇧🇪 Belgique</td>
                 <td><strong>8,5 M€</strong></td>
@@ -714,7 +722,7 @@ tbody tr:hover { background: #F8FAFC; }
                 </td>
               </tr>
               <tr>
-                <td><strong>Orientation prédictive</strong> — Min. Éducation</td>
+                <td><strong>Orientation prédictive</strong> - Min. Éducation</td>
                 <td><span class="das-tag das-2">DAS 2 Éducation</span></td>
                 <td>🇫🇷 France</td>
                 <td><strong>15 M€</strong></td>
@@ -728,7 +736,7 @@ tbody tr:hover { background: #F8FAFC; }
                 </td>
               </tr>
               <tr>
-                <td><strong>Aide rédaction jugements</strong> — Agence fédérale</td>
+                <td><strong>Aide rédaction jugements</strong> - Agence fédérale</td>
                 <td><span class="das-tag das-3">DAS 3 Justice</span></td>
                 <td>🇩🇪 Allemagne</td>
                 <td><strong>6,2 M€</strong></td>
@@ -742,7 +750,7 @@ tbody tr:hover { background: #F8FAFC; }
                 </td>
               </tr>
               <tr>
-                <td><strong>Ville durable IA</strong> — Chambéry Agglo</td>
+                <td><strong>Ville durable IA</strong> - Chambéry Agglo</td>
                 <td><span class="das-tag das-4">DAS 4 Collectivités</span></td>
                 <td>🇫🇷 France</td>
                 <td><strong>2,8 M€</strong></td>
@@ -756,7 +764,7 @@ tbody tr:hover { background: #F8FAFC; }
                 </td>
               </tr>
               <tr>
-                <td><strong>EaaS KYC</strong> — Banque Mutualiste</td>
+                <td><strong>EaaS KYC</strong> - Banque Mutualiste</td>
                 <td><span class="das-tag das-4">EaaS</span></td>
                 <td>🇫🇷 France</td>
                 <td><strong>420 k€</strong></td>
@@ -770,7 +778,7 @@ tbody tr:hover { background: #F8FAFC; }
                 </td>
               </tr>
               <tr>
-                <td><strong>IA sobriété énergétique</strong> — Logroño</td>
+                <td><strong>IA sobriété énergétique</strong> - Logroño</td>
                 <td><span class="das-tag das-4">DAS 4 Collectivités</span></td>
                 <td>🇪🇸 Espagne</td>
                 <td><strong>1,2 M€</strong></td>
@@ -857,7 +865,7 @@ tbody tr:hover { background: #F8FAFC; }
       <!-- KPI Table -->
       <div class="card">
         <div class="card-header">
-          <span class="card-title">KPI opérationnels — Suivi mensuel</span>
+          <span class="card-title">KPI opérationnels - Suivi mensuel</span>
         </div>
         <div class="card-body" style="overflow-x:auto">
           <table>
@@ -1051,7 +1059,7 @@ tbody tr:hover { background: #F8FAFC; }
           <div style="font-size:32px;flex-shrink:0">🎯</div>
           <div>
             <div style="color:#fff;font-size:15px;font-weight:700;margin-bottom:6px">Objectif du plan de communication interne</div>
-            <div style="color:var(--sidebar-text);font-size:13px;line-height:1.6">Faire de la transformation commerciale un <strong style="color:#fff">projet collectif de NGL</strong> — porté par tous, perçu comme cohérent avec la mission éthique de l'entreprise et générateur de fierté pour les équipes en place.</div>
+            <div style="color:var(--sidebar-text);font-size:13px;line-height:1.6">Faire de la transformation commerciale un <strong style="color:#fff">projet collectif de NGL</strong> - porté par tous, perçu comme cohérent avec la mission éthique de l'entreprise et générateur de fierté pour les équipes en place.</div>
             <div style="margin-top:12px;display:flex;gap:16px;flex-wrap:wrap">
               <span style="background:rgba(255,255,255,0.08);color:var(--sidebar-text);font-size:11px;font-weight:600;padding:4px 12px;border-radius:6px">58 → 77 collaborateurs (+19 ETP)</span>
               <span style="background:rgba(255,255,255,0.08);color:var(--sidebar-text);font-size:11px;font-weight:600;padding:4px 12px;border-radius:6px">4 phases · 12 mois</span>
@@ -1073,7 +1081,7 @@ tbody tr:hover { background: #F8FAFC; }
                 <div class="msg-key-num">#1</div>
                 <div>
                   <div class="msg-key-title">« NGL grandit pour porter sa mission plus loin »</div>
-                  <div class="msg-key-desc">La croissance commerciale est un moyen au service de la mission éthique — non une fin en soi. Ce message positionne le doublement des effectifs comme un acte de cohérence, pas de rupture.</div>
+                  <div class="msg-key-desc">La croissance commerciale est un moyen au service de la mission éthique - non une fin en soi. Ce message positionne le doublement des effectifs comme un acte de cohérence, pas de rupture.</div>
                 </div>
               </div>
               <div class="msg-key-card">
@@ -1094,7 +1102,7 @@ tbody tr:hover { background: #F8FAFC; }
                 <div class="msg-key-num">#4</div>
                 <div>
                   <div class="msg-key-title">« L'équipe en place est l'épine dorsale du projet »</div>
-                  <div class="msg-key-desc">Les 6 commerciaux historiques sont valorisés comme socle de compétence et de culture — l'arrivée des nouveaux conforte leur expertise et ne la remet pas en cause.</div>
+                  <div class="msg-key-desc">Les 6 commerciaux historiques sont valorisés comme socle de compétence et de culture - l'arrivée des nouveaux conforte leur expertise et ne la remet pas en cause.</div>
                 </div>
               </div>
             </div>
@@ -1121,7 +1129,7 @@ tbody tr:hover { background: #F8FAFC; }
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>Direction générale</strong><br><span style="font-size:11px;color:var(--text-muted)">Claire Favre — DG</span></td>
+                  <td><strong>Direction générale</strong><br><span style="font-size:11px;color:var(--text-muted)">Claire Favre - DG</span></td>
                   <td>1</td>
                   <td style="font-size:12px">Cohérence mission / croissance</td>
                   <td>Pilotage rigoureux, KPI consolidés</td>
@@ -1129,10 +1137,10 @@ tbody tr:hover { background: #F8FAFC; }
                   <td><span class="priority-dot"><span class="dot dot-critical"></span>Critique</span></td>
                 </tr>
                 <tr style="background:#FDFCFB">
-                  <td><strong>Commerciaux historiques</strong><br><span style="font-size:11px;color:var(--text-muted)">6 personnes — cible prioritaire</span></td>
+                  <td><strong>Commerciaux historiques</strong><br><span style="font-size:11px;color:var(--text-muted)">6 personnes - cible prioritaire</span></td>
                   <td>6</td>
                   <td style="font-size:12px">Sentiment de dilution, déclassement implicite</td>
-                  <td>#4 — Épine dorsale du projet</td>
+                  <td>#4 - Épine dorsale du projet</td>
                   <td><span class="pac-badge pac-badge-cible">1-1 + plénières</span></td>
                   <td><span class="priority-dot"><span class="dot dot-critical"></span>Critique</span></td>
                 </tr>
@@ -1140,7 +1148,7 @@ tbody tr:hover { background: #F8FAFC; }
                   <td><strong>Nouveaux recrutés</strong><br><span style="font-size:11px;color:var(--text-muted)">+6 sur 12 mois</span></td>
                   <td>+6</td>
                   <td style="font-size:12px">Intégration culture éthique NGL</td>
-                  <td>#2 — Ambassadeur éthique</td>
+                  <td>#2 - Ambassadeur éthique</td>
                   <td><span class="pac-badge pac-badge-format">Onboarding + mentor</span></td>
                   <td><span class="priority-dot"><span class="dot dot-high"></span>Élevée</span></td>
                 </tr>
@@ -1148,7 +1156,7 @@ tbody tr:hover { background: #F8FAFC; }
                   <td><strong>Fonctions support métier</strong><br><span style="font-size:11px;color:var(--text-muted)">R&D, juridique, UX, cloud</span></td>
                   <td>35</td>
                   <td style="font-size:12px">Surcharge de travail, perte de focus R&D</td>
-                  <td>#3 — Transformation pilotée et réversible</td>
+                  <td>#3 - Transformation pilotée et réversible</td>
                   <td><span class="pac-badge pac-badge-cible">Newsletter + Slack</span></td>
                   <td><span class="priority-dot"><span class="dot dot-medium"></span>Moyenne</span></td>
                 </tr>
@@ -1156,7 +1164,7 @@ tbody tr:hover { background: #F8FAFC; }
                   <td><strong>Fonctions transverses</strong><br><span style="font-size:11px;color:var(--text-muted)">RH, finance, ops</span></td>
                   <td>17</td>
                   <td style="font-size:12px">Impact sur charge administrative et budget</td>
-                  <td>#1 — NGL grandit pour porter sa mission</td>
+                  <td>#1 - NGL grandit pour porter sa mission</td>
                   <td><span class="pac-badge pac-badge-format">Plénière + intranet</span></td>
                   <td><span class="priority-dot"><span class="dot dot-medium"></span>Moyenne</span></td>
                 </tr>
@@ -1171,7 +1179,7 @@ tbody tr:hover { background: #F8FAFC; }
         <!-- 4 phases timeline -->
         <div class="card" style="margin-bottom:24px">
           <div class="card-header">
-            <span class="card-title">Plan de déploiement — 4 phases · 12 mois</span>
+            <span class="card-title">Plan de déploiement - 4 phases · 12 mois</span>
           </div>
           <div class="card-body-padded">
             <div class="phases-timeline">
@@ -1194,7 +1202,7 @@ tbody tr:hover { background: #F8FAFC; }
                     <div class="pac-meta"><span class="pac-badge pac-badge-date">S3</span><span class="pac-badge pac-badge-cible">Dir. commerciale</span></div>
                   </div>
                   <div class="phase-action-card" style="border-left:3px solid var(--danger)">
-                    <div class="pac-title">⚡ Brief confidentiel — 6 commerciaux historiques</div>
+                    <div class="pac-title">⚡ Brief confidentiel - 6 commerciaux historiques</div>
                     <div class="pac-desc">Les informer EN PREMIER. Recueillir leurs craintes. Signal de respect et de reconnaissance capital pour l'adhésion.</div>
                     <div class="pac-meta"><span class="pac-badge pac-badge-date">S4</span><span class="pac-badge pac-badge-urgent">Priorité absolue</span></div>
                   </div>
@@ -1224,7 +1232,7 @@ tbody tr:hover { background: #F8FAFC; }
                     <div class="pac-meta"><span class="pac-badge pac-badge-cible">Priorité : commerciaux + R&D</span><span class="pac-badge pac-badge-format">Notion / Wiki</span></div>
                   </div>
                   <div class="phase-action-card">
-                    <div class="pac-title">🖼️ Poster A2 — Trajectoire NGL 2025–2028</div>
+                    <div class="pac-title">🖼️ Poster A2 - Trajectoire NGL 2025–2028</div>
                     <div class="pac-desc">Visuel de synthèse : 4 DAS, 4 piliers de valeur, objectif 80 comptes. Présence visuelle quotidienne au siège.</div>
                     <div class="pac-meta"><span class="pac-badge pac-badge-cible">Espaces communs</span><span class="pac-badge pac-badge-format">4 exemplaires · 400 €</span></div>
                   </div>
@@ -1239,27 +1247,27 @@ tbody tr:hover { background: #F8FAFC; }
                 </div>
                 <div class="phase-actions">
                   <div class="phase-action-card">
-                    <div class="pac-title">M1 — CRM déployé + 2 premiers commerciaux</div>
+                    <div class="pac-title">M1 - CRM déployé + 2 premiers commerciaux</div>
                     <div class="pac-desc">Email de bienvenue des 2 recrues à toute l'équipe (présentation, DAS, binôme). Point CRM dans Flash Veille.</div>
                     <div class="pac-meta"><span class="pac-badge pac-badge-format">Email + newsletter</span></div>
                   </div>
                   <div class="phase-action-card">
-                    <div class="pac-title">M2 — Dépôt AO HospitalNet Belgique</div>
+                    <div class="pac-title">M2 - Dépôt AO HospitalNet Belgique</div>
                     <div class="pac-desc">« Notre premier AO structuré est soumis. » Mise en valeur des 6 contributeurs nommés. Signal de fierté collective.</div>
                     <div class="pac-meta"><span class="pac-badge pac-badge-format">Newsletter + Slack</span></div>
                   </div>
                   <div class="phase-action-card">
-                    <div class="pac-title">M3 — Bilan intégration 30/60/90</div>
+                    <div class="pac-title">M3 - Bilan intégration 30/60/90</div>
                     <div class="pac-desc">Témoignage anonymisé des recrues. Partage des indicateurs agrégés d'intégration (score onboarding cible > 8/10).</div>
                     <div class="pac-meta"><span class="pac-badge pac-badge-cible">Rétrospective trimestrielle</span></div>
                   </div>
                   <div class="phase-action-card">
-                    <div class="pac-title">M4+ — Rubrique mensuelle Flash Veille</div>
+                    <div class="pac-title">M4+ - Rubrique mensuelle Flash Veille</div>
                     <div class="pac-desc">1 KPI du mois + 1 fait marquant + 1 témoignage terrain. Format court (3 lignes max). Principe de sobriété éditoriale.</div>
                     <div class="pac-meta"><span class="pac-badge pac-badge-format">Mensuel · continu</span></div>
                   </div>
                   <div class="phase-action-card">
-                    <div class="pac-title">M9 — Bilan semestriel plénière</div>
+                    <div class="pac-title">M9 - Bilan semestriel plénière</div>
                     <div class="pac-desc">Résultats visuels à toute l'entreprise. « Cas client du trimestre. » Ambassadeur éthique mis en lumière.</div>
                     <div class="pac-meta"><span class="pac-badge pac-badge-cible">Plénière 30 min</span></div>
                   </div>
@@ -1299,7 +1307,7 @@ tbody tr:hover { background: #F8FAFC; }
         <div class="card" style="margin-bottom:24px">
           <div class="card-header">
             <span class="card-title">Indicateurs de succès du plan</span>
-            <span style="font-size:12px;color:var(--text-muted)">Mesurés mois par mois — seuils d'alerte définis</span>
+            <span style="font-size:12px;color:var(--text-muted)">Mesurés mois par mois - seuils d'alerte définis</span>
           </div>
           <div class="card-body-padded">
             <div class="kpi-targets-row">
@@ -1329,7 +1337,7 @@ tbody tr:hover { background: #F8FAFC; }
         <!-- Budget -->
         <div class="card">
           <div class="card-header">
-            <span class="card-title">Budget détaillé — Plan de communication interne</span>
+            <span class="card-title">Budget détaillé - Plan de communication interne</span>
             <span style="font-size:12px;color:var(--text-muted)">T1 2025 → T1 2026 · 0,02 % du CA cible 2025</span>
           </div>
           <div class="card-body" style="overflow-x:auto">
@@ -1372,7 +1380,7 @@ tbody tr:hover { background: #F8FAFC; }
         <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:24px;border-left:4px solid var(--accent)">
           <div style="font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Message central externe</div>
           <div style="font-size:16px;font-weight:700;color:var(--text-primary);font-style:italic;line-height:1.5">« NGL est le partenaire IA des organisations publiques qui ne veulent pas choisir entre performance et conformité. »</div>
-          <div style="font-size:12px;color:var(--text-secondary);margin-top:8px;line-height:1.5">CLARITY est la seule solution IA explicable, auditée ISO 42001 et certifiable CE IIa, conçue pour les AO high-risk du secteur public européen. La conformité n'est pas un frein — c'est l'avantage décisif de NGL.</div>
+          <div style="font-size:12px;color:var(--text-secondary);margin-top:8px;line-height:1.5">CLARITY est la seule solution IA explicable, auditée ISO 42001 et certifiable CE IIa, conçue pour les AO high-risk du secteur public européen. La conformité n'est pas un frein - c'est l'avantage décisif de NGL.</div>
         </div>
 
         <!-- 3 cibles externes -->
@@ -1384,7 +1392,7 @@ tbody tr:hover { background: #F8FAFC; }
             <div class="ext-cibles-grid">
               <div class="ext-cible-card">
                 <div class="ext-cible-icon">🏥</div>
-                <div class="ext-cible-title">Décideurs publics — acheteurs</div>
+                <div class="ext-cible-title">Décideurs publics - acheteurs</div>
                 <div class="ext-cible-count">DSI hospitaliers · DGESCO · Cours administratives · Collectivités · Agences EU</div>
                 <div class="ext-cible-msg">« Je cherche une IA qui passe l'audit de conformité et qui se justifie devant mes tutelles. »</div>
                 <div class="ext-cible-canal"><strong>Canaux :</strong> Salons sectoriels (Health AI Congress, EDUCATEC), réponses AO, rendez-vous CPO/DSI, référencement TED/BOAMP</div>
@@ -1410,7 +1418,7 @@ tbody tr:hover { background: #F8FAFC; }
         <!-- 3 phases externes -->
         <div class="card" style="margin-bottom:24px">
           <div class="card-header">
-            <span class="card-title">Plan de déploiement externe — 3 phases · 18 mois</span>
+            <span class="card-title">Plan de déploiement externe - 3 phases · 18 mois</span>
           </div>
           <div class="card-body-padded">
             <div class="phases-timeline">
@@ -1428,7 +1436,7 @@ tbody tr:hover { background: #F8FAFC; }
                     <div class="pac-meta"><span class="pac-badge pac-badge-format">Kit commercial</span><span class="pac-badge pac-badge-date">Avr. 2025</span></div>
                   </div>
                   <div class="phase-action-card">
-                    <div class="pac-title">Activation LinkedIn — compte NGL + DG</div>
+                    <div class="pac-title">Activation LinkedIn - compte NGL + DG</div>
                     <div class="pac-desc">2 publications/semaine : veille AI Act commentée, coulisses CLARITY, chiffres performance AO. Objectif : 5 000 abonnés page NGL à fin 2025.</div>
                     <div class="pac-meta"><span class="pac-badge pac-badge-format">Contenu organique</span><span class="pac-badge pac-badge-date">Continu</span></div>
                   </div>
@@ -1453,7 +1461,7 @@ tbody tr:hover { background: #F8FAFC; }
                     <div class="pac-meta"><span class="pac-badge pac-badge-urgent">Dépend résultat AO</span><span class="pac-badge pac-badge-format">Content marketing</span></div>
                   </div>
                   <div class="phase-action-card">
-                    <div class="pac-title">Webinaire « IA éthique & AI Act — ce que ça change pour vos AO »</div>
+                    <div class="pac-title">Webinaire « IA éthique & AI Act - ce que ça change pour vos AO »</div>
                     <div class="pac-desc">Format 1h · 200 inscrits cibles (DSI, DGA, responsables conformité secteur public). Co-animé avec un partenaire juridique ou académique.</div>
                     <div class="pac-meta"><span class="pac-badge pac-badge-cible">Acheteurs + presse</span><span class="pac-badge pac-badge-date">Oct. 2025</span></div>
                   </div>
@@ -1478,7 +1486,7 @@ tbody tr:hover { background: #F8FAFC; }
                     <div class="pac-meta"><span class="pac-badge pac-badge-urgent">Avant août 2026</span><span class="pac-badge pac-badge-format">CP + digital</span></div>
                   </div>
                   <div class="phase-action-card">
-                    <div class="pac-title">Rapport annuel « NGL — IA éthique en pratique »</div>
+                    <div class="pac-title">Rapport annuel « NGL - IA éthique en pratique »</div>
                     <div class="pac-desc">Bilan chiffré : AO remportés, CA, comptes actifs, empreinte carbone GreenMeter. Diffusion DSI, partenaires EU, presse.</div>
                     <div class="pac-meta"><span class="pac-badge pac-badge-format">PDF 10 pages</span><span class="pac-badge pac-badge-date">T1 2026</span></div>
                   </div>
@@ -1519,7 +1527,7 @@ tbody tr:hover { background: #F8FAFC; }
         <!-- Budget externe -->
         <div class="card">
           <div class="card-header">
-            <span class="card-title">Budget estimatif — Communication externe</span>
+            <span class="card-title">Budget estimatif - Communication externe</span>
             <span style="font-size:12px;color:var(--text-muted)">Ordre de grandeur · à préciser avec Dir. commerciale</span>
           </div>
           <div class="card-body" style="overflow-x:auto">
@@ -1540,7 +1548,7 @@ tbody tr:hover { background: #F8FAFC; }
             </table>
           </div>
           <div style="padding:12px 20px;background:#EBF5FB;border-top:1px solid var(--border);font-size:12px;color:#1A5276">
-            ℹ️ <strong>Note :</strong> Ce budget est construit en cohérence avec le budget marketing global de 350 k€ (3 % CA 2025) défini en Mission 2. La communication externe représente ici environ 5,4 % de cette enveloppe — le solde couvrant les actions commerciales directes (salaires, frais terrain, CRM).
+            ℹ️ <strong>Note :</strong> Ce budget est construit en cohérence avec le budget marketing global de 350 k€ (3 % CA 2025) défini en Mission 2. La communication externe représente ici environ 5,4 % de cette enveloppe - le solde couvrant les actions commerciales directes (salaires, frais terrain, CRM).
           </div>
         </div>
 
@@ -1548,13 +1556,376 @@ tbody tr:hover { background: #F8FAFC; }
 
     </div><!-- /tab-plancom -->
 
+
+    <!-- ====== TAB: ÉQUIPE & RÉSILIENCE ====== -->
+    <div class="tab-content" id="tab-crm">
+
+      <!-- KPIs équipe -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Effectif commercial</div>
+          <div class="kpi-value">6 <span style="font-size:18px;color:var(--text-muted)">/ 12</span></div>
+          <div class="kpi-sub kpi-neutral">+6 recrutements T2 2025 → T1 2026</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Onboardings en cours</div>
+          <div class="kpi-value">4</div>
+          <div class="kpi-sub kpi-up">↑ Vague 1 - DAS 1 & 2</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Binômage actif</div>
+          <div class="kpi-value">100 %</div>
+          <div class="kpi-sub kpi-up">↑ 5 DAS couverts ≥ 2 comm.</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Score AO moyen (pipeline)</div>
+          <div class="kpi-value">72 <span style="font-size:18px;color:var(--text-muted)">/100</span></div>
+          <div class="kpi-sub kpi-up">↑ Seuil GO : 60 pts</div>
+        </div>
+      </div>
+
+      <!-- Suivi onboarding + Scoring AO -->
+      <div class="charts-row" style="align-items:stretch">
+
+        <!-- Suivi onboarding 30/60/90 - HTML pur -->
+        <div class="card" style="flex:1.1">
+          <div class="card-header">
+            <span class="card-title">Suivi onboarding recrues - parcours 30/60/90 j</span>
+            <span style="font-size:11px;color:var(--text-muted)">Vague 1 · T2 2025</span>
+          </div>
+          <div class="card-body-padded" style="padding:20px 24px;display:flex;flex-direction:column;gap:22px">
+
+            <!-- Recrue 1 -->
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+                <span style="font-size:13px;font-weight:600;color:var(--text-primary)">Recrue DAS 1 - Santé · Commercial Terrain</span>
+                <span style="font-size:11px;font-weight:600;color:#E67E22;background:#FEF9E7;padding:2px 8px;border-radius:10px">J+52 · En cours</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+                <span style="font-size:11px;color:var(--text-muted);width:32px">J+30</span>
+                <div style="flex:1;height:10px;background:#EEF2F7;border-radius:5px"><div style="height:100%;width:100%;background:#1ABC9C;border-radius:5px"></div></div>
+                <span style="font-size:11px;font-weight:700;color:#1ABC9C;width:36px">100 %</span>
+                <span style="font-size:11px;color:#1E8449">✓ Validé</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+                <span style="font-size:11px;color:var(--text-muted);width:32px">J+60</span>
+                <div style="flex:1;height:10px;background:#EEF2F7;border-radius:5px"><div style="height:100%;width:80%;background:#2E86C1;border-radius:5px"></div></div>
+                <span style="font-size:11px;font-weight:700;color:#2E86C1;width:36px">80 %</span>
+                <span style="font-size:11px;color:#2E86C1">En cours</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:var(--text-muted);width:32px">J+90</span>
+                <div style="flex:1;height:10px;background:#EEF2F7;border-radius:5px"><div style="height:100%;width:40%;background:#E67E22;border-radius:5px"></div></div>
+                <span style="font-size:11px;font-weight:700;color:#E67E22;width:36px">40 %</span>
+                <span style="font-size:11px;color:var(--text-muted)">Démarré</span>
+              </div>
+            </div>
+
+            <!-- Recrue 2 -->
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+                <span style="font-size:13px;font-weight:600;color:var(--text-primary)">Recrue DAS 1 - Santé · Commercial Junior</span>
+                <span style="font-size:11px;font-weight:600;color:#E67E22;background:#FEF9E7;padding:2px 8px;border-radius:10px">J+45 · En cours</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+                <span style="font-size:11px;color:var(--text-muted);width:32px">J+30</span>
+                <div style="flex:1;height:10px;background:#EEF2F7;border-radius:5px"><div style="height:100%;width:100%;background:#1ABC9C;border-radius:5px"></div></div>
+                <span style="font-size:11px;font-weight:700;color:#1ABC9C;width:36px">100 %</span>
+                <span style="font-size:11px;color:#1E8449">✓ Validé</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+                <span style="font-size:11px;color:var(--text-muted);width:32px">J+60</span>
+                <div style="flex:1;height:10px;background:#EEF2F7;border-radius:5px"><div style="height:100%;width:65%;background:#2E86C1;border-radius:5px"></div></div>
+                <span style="font-size:11px;font-weight:700;color:#2E86C1;width:36px">65 %</span>
+                <span style="font-size:11px;color:#2E86C1">En cours</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:var(--text-muted);width:32px">J+90</span>
+                <div style="flex:1;height:10px;background:#EEF2F7;border-radius:5px"><div style="height:100%;width:0%;background:#E67E22;border-radius:5px"></div></div>
+                <span style="font-size:11px;font-weight:700;color:#CCC;width:36px">-</span>
+                <span style="font-size:11px;color:var(--text-muted)">Non démarré</span>
+              </div>
+            </div>
+
+            <!-- Recrue 3 -->
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+                <span style="font-size:13px;font-weight:600;color:var(--text-primary)">Recrue DAS 2 - Éducation · Senior</span>
+                <span style="font-size:11px;font-weight:600;color:#2E86C1;background:#EBF5FB;padding:2px 8px;border-radius:10px">J+12 · Phase 1</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+                <span style="font-size:11px;color:var(--text-muted);width:32px">J+30</span>
+                <div style="flex:1;height:10px;background:#EEF2F7;border-radius:5px"><div style="height:100%;width:70%;background:#2E86C1;border-radius:5px"></div></div>
+                <span style="font-size:11px;font-weight:700;color:#2E86C1;width:36px">70 %</span>
+                <span style="font-size:11px;color:#2E86C1">En cours</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+                <span style="font-size:11px;color:var(--text-muted);width:32px">J+60</span>
+                <div style="flex:1;height:10px;background:#EEF2F7;border-radius:5px"></div>
+                <span style="font-size:11px;font-weight:700;color:#CCC;width:36px">-</span>
+                <span style="font-size:11px;color:var(--text-muted)">Non démarré</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:var(--text-muted);width:32px">J+90</span>
+                <div style="flex:1;height:10px;background:#EEF2F7;border-radius:5px"></div>
+                <span style="font-size:11px;font-weight:700;color:#CCC;width:36px">-</span>
+                <span style="font-size:11px;color:var(--text-muted)">Non démarré</span>
+              </div>
+            </div>
+
+            <!-- Recrue 4 -->
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+                <span style="font-size:13px;font-weight:600;color:var(--text-primary)">Recrue DAS 2 - Éducation · Junior</span>
+                <span style="font-size:11px;font-weight:600;color:#2E86C1;background:#EBF5FB;padding:2px 8px;border-radius:10px">J+8 · Phase 1</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+                <span style="font-size:11px;color:var(--text-muted);width:32px">J+30</span>
+                <div style="flex:1;height:10px;background:#EEF2F7;border-radius:5px"><div style="height:100%;width:55%;background:#2E86C1;border-radius:5px"></div></div>
+                <span style="font-size:11px;font-weight:700;color:#2E86C1;width:36px">55 %</span>
+                <span style="font-size:11px;color:#2E86C1">En cours</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+                <span style="font-size:11px;color:var(--text-muted);width:32px">J+60</span>
+                <div style="flex:1;height:10px;background:#EEF2F7;border-radius:5px"></div>
+                <span style="font-size:11px;font-weight:700;color:#CCC;width:36px">-</span>
+                <span style="font-size:11px;color:var(--text-muted)">Non démarré</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:var(--text-muted);width:32px">J+90</span>
+                <div style="flex:1;height:10px;background:#EEF2F7;border-radius:5px"></div>
+                <span style="font-size:11px;font-weight:700;color:#CCC;width:36px">-</span>
+                <span style="font-size:11px;color:var(--text-muted)">Non démarré</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Scoring go/no-go - CSS pur -->
+        <div class="card" style="flex:1">
+          <div class="card-header">
+            <span class="card-title">Scoring go/no-go AO (Annexe D)</span>
+            <span style="font-size:11px;color:var(--text-muted)">Pipeline actif · seuil GO = 60 pts</span>
+          </div>
+          <div class="card-body-padded" style="padding:20px 24px;display:flex;flex-direction:column;gap:16px">
+
+            <!-- Légende -->
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:4px">
+              <span style="font-size:11px;display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:#1ABC9C;border-radius:2px;display:inline-block"></span>GO automatique ≥ 75</span>
+              <span style="font-size:11px;display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:#2E86C1;border-radius:2px;display:inline-block"></span>GO conditionnel 60–74</span>
+              <span style="font-size:11px;display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:#E67E22;border-radius:2px;display:inline-block"></span>Discussion DG 45–59</span>
+              <span style="font-size:11px;display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:#E74C3C;border-radius:2px;display:inline-block"></span>NO-GO &lt; 45</span>
+            </div>
+
+            <!-- AO 1 -->
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+                <span style="font-size:12px;font-weight:600;color:var(--text-primary)">HospitalNet Belgique (DAS 1)</span>
+                <span style="font-size:12px;font-weight:700;color:#1ABC9C">79/100</span>
+              </div>
+              <div style="position:relative;height:12px;background:#EEF2F7;border-radius:6px">
+                <div style="height:100%;width:79%;background:#1ABC9C;border-radius:6px"></div>
+                <div style="position:absolute;top:-2px;left:60%;height:16px;width:2px;background:#E74C3C;opacity:0.6"></div>
+              </div>
+            </div>
+            <!-- AO 2 -->
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+                <span style="font-size:12px;font-weight:600;color:var(--text-primary)">AO Rectorat Lyon (DAS 2)</span>
+                <span style="font-size:12px;font-weight:700;color:#2E86C1">74/100</span>
+              </div>
+              <div style="position:relative;height:12px;background:#EEF2F7;border-radius:6px">
+                <div style="height:100%;width:74%;background:#2E86C1;border-radius:6px"></div>
+                <div style="position:absolute;top:-2px;left:60%;height:16px;width:2px;background:#E74C3C;opacity:0.6"></div>
+              </div>
+            </div>
+            <!-- AO 3 -->
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+                <span style="font-size:12px;font-weight:600;color:var(--text-primary)">CLARA Justice DE (DAS 3)</span>
+                <span style="font-size:12px;font-weight:700;color:#2E86C1">68/100</span>
+              </div>
+              <div style="position:relative;height:12px;background:#EEF2F7;border-radius:6px">
+                <div style="height:100%;width:68%;background:#2E86C1;border-radius:6px"></div>
+                <div style="position:absolute;top:-2px;left:60%;height:16px;width:2px;background:#E74C3C;opacity:0.6"></div>
+              </div>
+            </div>
+            <!-- AO 4 -->
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+                <span style="font-size:12px;font-weight:600;color:var(--text-primary)">Horizon EU ONG (DAS 4)</span>
+                <span style="font-size:12px;font-weight:700;color:#2E86C1">63/100</span>
+              </div>
+              <div style="position:relative;height:12px;background:#EEF2F7;border-radius:6px">
+                <div style="height:100%;width:63%;background:#2E86C1;border-radius:6px"></div>
+                <div style="position:absolute;top:-2px;left:60%;height:16px;width:2px;background:#E74C3C;opacity:0.6"></div>
+              </div>
+            </div>
+            <!-- AO 5 -->
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+                <span style="font-size:12px;font-weight:600;color:var(--text-primary)">Ville Durable ES (DAS 4)</span>
+                <span style="font-size:12px;font-weight:700;color:#E67E22">55/100</span>
+              </div>
+              <div style="position:relative;height:12px;background:#EEF2F7;border-radius:6px">
+                <div style="height:100%;width:55%;background:#E67E22;border-radius:6px"></div>
+                <div style="position:absolute;top:-2px;left:60%;height:16px;width:2px;background:#E74C3C;opacity:0.6"></div>
+              </div>
+            </div>
+            <!-- AO 6 -->
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+                <span style="font-size:12px;font-weight:600;color:var(--text-primary)">AO Fintech KYC (EaaS)</span>
+                <span style="font-size:12px;font-weight:700;color:#E74C3C">48/100</span>
+              </div>
+              <div style="position:relative;height:12px;background:#EEF2F7;border-radius:6px">
+                <div style="height:100%;width:48%;background:#E74C3C;border-radius:6px"></div>
+                <div style="position:absolute;top:-2px;left:60%;height:16px;width:2px;background:#E74C3C;opacity:0.6"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Matrice de binômage -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-header">
+          <span class="card-title">Matrice de binômage & couverture inter-DAS</span>
+          <span style="font-size:11px;color:var(--text-muted)">Mise à jour : T2 2025</span>
+        </div>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:13px">
+            <thead>
+              <tr style="background:var(--sidebar-bg);color:#fff">
+                <th style="padding:10px 16px;text-align:left;font-weight:600">DAS</th>
+                <th style="padding:10px 16px;text-align:left;font-weight:600">Référent principal</th>
+                <th style="padding:10px 16px;text-align:left;font-weight:600">Couvrant interne</th>
+                <th style="padding:10px 16px;text-align:left;font-weight:600">Couvrant externe (DAS proche)</th>
+                <th style="padding:10px 16px;text-align:center;font-weight:600">Délai reprise</th>
+                <th style="padding:10px 16px;text-align:center;font-weight:600">Statut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 16px;font-weight:600">DAS 1 - Santé</td>
+                <td style="padding:10px 16px">Senior Acc. Mgr DAS 1</td>
+                <td style="padding:10px 16px">2 commerciaux DAS 1</td>
+                <td style="padding:10px 16px">Référent DAS 2</td>
+                <td style="padding:10px 16px;text-align:center;font-weight:700;color:#1ABC9C">&lt; 48 h</td>
+                <td style="padding:10px 16px;text-align:center"><span style="background:#EAFAF1;color:#1E8449;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700">✓ Opérationnel</span></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);background:#FAFBFC">
+                <td style="padding:10px 16px;font-weight:600">DAS 2 - Éducation</td>
+                <td style="padding:10px 16px">Senior Acc. Mgr DAS 2</td>
+                <td style="padding:10px 16px">2 commerciaux DAS 2</td>
+                <td style="padding:10px 16px">Référent DAS 1</td>
+                <td style="padding:10px 16px;text-align:center;font-weight:700;color:#1ABC9C">&lt; 48 h</td>
+                <td style="padding:10px 16px;text-align:center"><span style="background:#EAFAF1;color:#1E8449;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700">✓ Opérationnel</span></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 16px;font-weight:600">DAS 3 - Justice</td>
+                <td style="padding:10px 16px">Senior Acc. Mgr DAS 3</td>
+                <td style="padding:10px 16px">2 commerciaux DAS 3</td>
+                <td style="padding:10px 16px">Resp. AO transverse</td>
+                <td style="padding:10px 16px;text-align:center;font-weight:700;color:#E67E22">&lt; 72 h</td>
+                <td style="padding:10px 16px;text-align:center"><span style="background:#EAFAF1;color:#1E8449;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700">✓ Opérationnel</span></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);background:#FAFBFC">
+                <td style="padding:10px 16px;font-weight:600">DAS 4 - Collectivités</td>
+                <td style="padding:10px 16px">Commercial DAS 4 senior</td>
+                <td style="padding:10px 16px">Resp. AO transverse</td>
+                <td style="padding:10px 16px">Référent DAS 2</td>
+                <td style="padding:10px 16px;text-align:center;font-weight:700;color:#E67E22">&lt; 72 h</td>
+                <td style="padding:10px 16px;text-align:center"><span style="background:#FEF9E7;color:#D4AC0D;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700">⚠ En montée</span></td>
+              </tr>
+              <tr>
+                <td style="padding:10px 16px;font-weight:600">Resp. AO transverse</td>
+                <td style="padding:10px 16px">Resp. AO</td>
+                <td style="padding:10px 16px">Senior DAS 1</td>
+                <td style="padding:10px 16px">Direction Commerciale</td>
+                <td style="padding:10px 16px;text-align:center;font-weight:700;color:#1ABC9C">&lt; 24 h</td>
+                <td style="padding:10px 16px;text-align:center"><span style="background:#EAFAF1;color:#1E8449;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700">✓ Opérationnel</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- KPIs résilience -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Indicateurs de résilience - suivi trimestriel</span>
+        </div>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:13px">
+            <thead>
+              <tr style="background:#F2F4F7">
+                <th style="padding:10px 16px;text-align:left;font-weight:600;color:var(--text-secondary)">Indicateur</th>
+                <th style="padding:10px 16px;text-align:center;font-weight:600;color:var(--text-secondary)">Cible</th>
+                <th style="padding:10px 16px;text-align:center;font-weight:600;color:var(--text-secondary)">Fréquence</th>
+                <th style="padding:10px 16px;text-align:left;font-weight:600;color:var(--text-secondary)">Responsable</th>
+                <th style="padding:10px 16px;text-align:center;font-weight:600;color:var(--text-secondary)">Ref. Annexe</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 16px">Taux de rétention commerciale</td>
+                <td style="padding:10px 16px;text-align:center;font-weight:700;color:#1ABC9C">≥ 85 % / an</td>
+                <td style="padding:10px 16px;text-align:center">Trimestriel</td>
+                <td style="padding:10px 16px">DRH</td>
+                <td style="padding:10px 16px;text-align:center;font-size:12px;color:var(--text-muted)">Annexe C</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);background:#FAFBFC">
+                <td style="padding:10px 16px">Comptes couverts par ≥ 2 commerciaux</td>
+                <td style="padding:10px 16px;text-align:center;font-weight:700;color:#1ABC9C">100 % DAS 1 & 2</td>
+                <td style="padding:10px 16px;text-align:center">Mensuel</td>
+                <td style="padding:10px 16px">Resp. AO</td>
+                <td style="padding:10px 16px;text-align:center;font-size:12px;color:var(--text-muted)">Annexe C</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 16px">Délai moyen de reprise d'un dossier</td>
+                <td style="padding:10px 16px;text-align:center;font-weight:700;color:#1ABC9C">&lt; 48 h</td>
+                <td style="padding:10px 16px;text-align:center">Par incident</td>
+                <td style="padding:10px 16px">Direction Commerciale</td>
+                <td style="padding:10px 16px;text-align:center;font-size:12px;color:var(--text-muted)">Annexe C</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);background:#FAFBFC">
+                <td style="padding:10px 16px">Score AO go/no-go moyen pipeline</td>
+                <td style="padding:10px 16px;text-align:center;font-weight:700;color:#2E86C1">≥ 65 / 100</td>
+                <td style="padding:10px 16px;text-align:center">Par AO</td>
+                <td style="padding:10px 16px">Direction Commerciale</td>
+                <td style="padding:10px 16px;text-align:center;font-size:12px;color:var(--text-muted)">Annexe D</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 16px">Durée moyenne intégration d'un remplaçant</td>
+                <td style="padding:10px 16px;text-align:center;font-weight:700;color:#1ABC9C">≤ 60 j opérationnel</td>
+                <td style="padding:10px 16px;text-align:center">Par recrutement</td>
+                <td style="padding:10px 16px">DRH</td>
+                <td style="padding:10px 16px;text-align:center;font-size:12px;color:var(--text-muted)">Annexe B/C</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 16px">Taux de binômage actif (CRM à jour)</td>
+                <td style="padding:10px 16px;text-align:center;font-weight:700;color:#1ABC9C">≥ 90 % des comptes</td>
+                <td style="padding:10px 16px;text-align:center">Mensuel</td>
+                <td style="padding:10px 16px">Resp. AO</td>
+                <td style="padding:10px 16px;text-align:center;font-size:12px;color:var(--text-muted)">Annexe C</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /tab-crm -->
+
   </main>
 </div>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <span>© 2025 Neurogenia-Lumen — Direction Stratégie et Marché</span>
-  <span>Confidentiel — Données internes</span>
+  <span>© 2025 Neurogenia-Lumen - Direction Stratégie et Marché</span>
+  <span>Confidentiel - Données internes</span>
 </footer>
 
 <script>
@@ -1569,7 +1940,8 @@ function switchTab(tabId, el) {
     pipeline: "Pipeline des appels d'offres",
     performance: "Performance commerciale",
     risques: "Matrice des risques",
-    plancom: "Plan de communication"
+    plancom: "Plan de communication",
+    crm: "Suivi collaborateurs"
   };
   document.getElementById('topbar-title').textContent = titles[tabId];
 
@@ -1578,6 +1950,7 @@ function switchTab(tabId, el) {
     initCharts();
     window.chartsInit = true;
   }
+
 
   // Reset com sub-tabs when navigating away and back
   if (tabId === 'plancom') {
