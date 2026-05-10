@@ -372,6 +372,208 @@ tbody tr:hover { background: #F8FAFC; }
   .kpi-grid { grid-template-columns: 1fr; }
 }
 
+/* ========== PLAN DE COM ========== */
+.com-tabs-bar {
+  display: flex;
+  gap: 0;
+  margin-bottom: 28px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 6px;
+  width: fit-content;
+}
+.com-tab-btn {
+  padding: 10px 28px;
+  font-size: 14px; font-weight: 600;
+  border: none; border-radius: 7px;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'DM Sans', sans-serif;
+}
+.com-tab-btn.active {
+  background: var(--sidebar-bg);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.com-tab-btn:not(.active):hover { background: var(--bg); color: var(--text-primary); }
+
+.com-section { display: none; }
+.com-section.active { display: block; animation: fadeIn 0.3s ease; }
+
+/* Messages clés */
+.msg-keys-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.msg-key-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 20px 22px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: box-shadow 0.2s;
+}
+.msg-key-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.msg-key-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--sidebar-bg);
+  color: #fff;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.msg-key-title { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; font-style: italic; }
+.msg-key-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+
+/* Timeline phases */
+.phases-timeline {
+  position: relative;
+  padding-left: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.phases-timeline::before {
+  content: '';
+  position: absolute;
+  left: 14px; top: 20px; bottom: 20px;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--accent), var(--accent2), var(--accent-orange), var(--sidebar-bg));
+  border-radius: 2px;
+}
+.phase-item {
+  position: relative;
+  padding: 0 0 28px 20px;
+}
+.phase-item::before {
+  content: '';
+  position: absolute;
+  left: -22px; top: 6px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 3px var(--accent);
+}
+.phase-item:nth-child(2)::before { box-shadow: 0 0 0 3px var(--accent2); }
+.phase-item:nth-child(3)::before { box-shadow: 0 0 0 3px var(--accent-orange); }
+.phase-item:nth-child(4)::before { box-shadow: 0 0 0 3px var(--sidebar-bg); }
+.phase-item-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+}
+.phase-pill {
+  padding: 4px 12px; border-radius: 20px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  color: #fff;
+}
+.phase-item-title { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+.phase-period-tag { font-size: 12px; color: var(--text-muted); margin-left: auto; }
+.phase-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+}
+.phase-action-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  transition: box-shadow 0.2s;
+}
+.phase-action-card:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+.pac-title { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+.pac-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+.pac-meta { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.pac-badge {
+  display: inline-block; padding: 2px 8px; border-radius: 4px;
+  font-size: 10px; font-weight: 700;
+}
+.pac-badge-format { background: #EBF5FB; color: var(--accent); }
+.pac-badge-cible { background: #E8F8F5; color: #1a9a7c; }
+.pac-badge-urgent { background: #FDEDEC; color: var(--danger); }
+.pac-badge-date { background: #F0F3F7; color: var(--text-secondary); }
+
+/* KPI targets */
+.kpi-targets-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.kpi-target-card {
+  background: var(--sidebar-bg);
+  border-radius: 12px;
+  padding: 18px 16px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.kpi-target-card::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+.kpi-target-card:nth-child(1)::after { background: var(--accent); }
+.kpi-target-card:nth-child(2)::after { background: var(--accent2); }
+.kpi-target-card:nth-child(3)::after { background: var(--accent-orange); }
+.kpi-target-card:nth-child(4)::after { background: var(--danger); }
+.kpi-target-value { font-family: 'Space Mono', monospace; font-size: 26px; font-weight: 700; color: #fff; }
+.kpi-target-label { font-size: 11px; color: var(--sidebar-text); margin-top: 6px; line-height: 1.4; }
+
+/* Stakeholder table priority cell */
+.priority-dot {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700;
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.dot-critical { background: var(--danger); }
+.dot-high { background: var(--warning); }
+.dot-medium { background: var(--accent); }
+
+/* External com cibles */
+.ext-cibles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.ext-cible-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-top: 3px solid;
+  transition: box-shadow 0.2s;
+}
+.ext-cible-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.ext-cible-card:nth-child(1) { border-top-color: var(--accent); }
+.ext-cible-card:nth-child(2) { border-top-color: var(--accent2); }
+.ext-cible-card:nth-child(3) { border-top-color: var(--accent-orange); }
+.ext-cible-icon { font-size: 28px; margin-bottom: 10px; }
+.ext-cible-title { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+.ext-cible-count { font-size: 11px; color: var(--text-muted); margin-bottom: 10px; }
+.ext-cible-msg { font-size: 12px; color: var(--text-secondary); line-height: 1.5; font-style: italic; border-left: 3px solid var(--border); padding-left: 10px; margin-bottom: 10px; }
+.ext-cible-canal { font-size: 11px; color: var(--text-muted); }
+.ext-cible-canal strong { color: var(--text-primary); }
+
+@media (max-width: 900px) {
+  .msg-keys-grid { grid-template-columns: 1fr; }
+  .kpi-targets-row { grid-template-columns: repeat(2, 1fr); }
+  .ext-cibles-grid { grid-template-columns: 1fr; }
+  .phase-actions { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .kpi-targets-row { grid-template-columns: 1fr 1fr; }
+  .com-tab-btn { padding: 9px 16px; font-size: 13px; }
+}
+
 /* ========== ANIMATIONS ========== */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
@@ -417,6 +619,12 @@ tbody tr:hover { background: #F8FAFC; }
       <span class="nav-icon">⚠️</span>
       <span>Risques</span>
       <span class="nav-badge" style="background:var(--warning)">3</span>
+    </div>
+
+    <div class="sidebar-section-label">Communication</div>
+    <div class="nav-item" data-tab="plancom" onclick="switchTab('plancom', this)">
+      <span class="nav-icon">📣</span>
+      <span>Plan de communication</span>
     </div>
   </nav>
 
@@ -826,6 +1034,520 @@ tbody tr:hover { background: #F8FAFC; }
       </div>
     </div>
 
+    <!-- ====== TAB: PLAN DE COMMUNICATION ====== -->
+    <div class="tab-content" id="tab-plancom">
+
+      <!-- Switcher Interne / Externe -->
+      <div class="com-tabs-bar">
+        <button class="com-tab-btn active" onclick="switchComTab('interne', this)">🏢 Communication interne</button>
+        <button class="com-tab-btn" onclick="switchComTab('externe', this)">🌐 Communication externe</button>
+      </div>
+
+      <!-- ========== INTERNE ========== -->
+      <div class="com-section active" id="com-interne">
+
+        <!-- Bannière objectif -->
+        <div style="background:var(--sidebar-bg);border-radius:12px;padding:20px 28px;margin-bottom:24px;display:flex;align-items:flex-start;gap:20px">
+          <div style="font-size:32px;flex-shrink:0">🎯</div>
+          <div>
+            <div style="color:#fff;font-size:15px;font-weight:700;margin-bottom:6px">Objectif du plan de communication interne</div>
+            <div style="color:var(--sidebar-text);font-size:13px;line-height:1.6">Faire de la transformation commerciale un <strong style="color:#fff">projet collectif de NGL</strong> — porté par tous, perçu comme cohérent avec la mission éthique de l'entreprise et générateur de fierté pour les équipes en place.</div>
+            <div style="margin-top:12px;display:flex;gap:16px;flex-wrap:wrap">
+              <span style="background:rgba(255,255,255,0.08);color:var(--sidebar-text);font-size:11px;font-weight:600;padding:4px 12px;border-radius:6px">58 → 64 collaborateurs</span>
+              <span style="background:rgba(255,255,255,0.08);color:var(--sidebar-text);font-size:11px;font-weight:600;padding:4px 12px;border-radius:6px">4 phases · 12 mois</span>
+              <span style="background:rgba(255,255,255,0.08);color:var(--sidebar-text);font-size:11px;font-weight:600;padding:4px 12px;border-radius:6px">Budget : 3 000 €</span>
+              <span style="background:rgba(255,255,255,0.08);color:var(--sidebar-text);font-size:11px;font-weight:600;padding:4px 12px;border-radius:6px">Canaux existants prioritaires</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 messages clés -->
+        <div class="card" style="margin-bottom:24px">
+          <div class="card-header">
+            <span class="card-title">Les 4 messages clés du projet</span>
+            <span style="font-size:12px;color:var(--text-muted)">Grammaire commune managers · supports · prises de parole</span>
+          </div>
+          <div class="card-body-padded">
+            <div class="msg-keys-grid">
+              <div class="msg-key-card">
+                <div class="msg-key-num">#1</div>
+                <div>
+                  <div class="msg-key-title">« NGL grandit pour porter sa mission plus loin »</div>
+                  <div class="msg-key-desc">La croissance commerciale est un moyen au service de la mission éthique — non une fin en soi. Ce message positionne le doublement des effectifs comme un acte de cohérence, pas de rupture.</div>
+                </div>
+              </div>
+              <div class="msg-key-card">
+                <div class="msg-key-num">#2</div>
+                <div>
+                  <div class="msg-key-title">« Chaque commercial est un ambassadeur de l'intelligence éthique »</div>
+                  <div class="msg-key-desc">Le rôle commercial chez NGL ne se réduit pas à la vente : il porte les engagements éthiques de l'entreprise auprès des clients publics. Certification "Ambassadeur éthique" associée.</div>
+                </div>
+              </div>
+              <div class="msg-key-card">
+                <div class="msg-key-num">#3</div>
+                <div>
+                  <div class="msg-key-title">« Une transformation pilotée, mesurée, réversible »</div>
+                  <div class="msg-key-desc">Le projet est conduit avec rigueur : KPI publics, jalons d'évaluation, mécanismes d'ajustement à mi-parcours. La transparence est le principal levier d'adhésion.</div>
+                </div>
+              </div>
+              <div class="msg-key-card">
+                <div class="msg-key-num">#4</div>
+                <div>
+                  <div class="msg-key-title">« L'équipe en place est l'épine dorsale du projet »</div>
+                  <div class="msg-key-desc">Les 6 commerciaux historiques sont valorisés comme socle de compétence et de culture — l'arrivée des nouveaux conforte leur expertise et ne la remet pas en cause.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cartographie parties prenantes -->
+        <div class="card" style="margin-bottom:24px">
+          <div class="card-header">
+            <span class="card-title">Cartographie des 5 cibles internes</span>
+            <span style="font-size:12px;color:var(--text-muted)">Classées par criticité communicationnelle</span>
+          </div>
+          <div class="card-body" style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr>
+                  <th>Cible</th>
+                  <th>Effectif</th>
+                  <th>Crainte principale</th>
+                  <th>Message clé</th>
+                  <th>Canal principal</th>
+                  <th>Priorité</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Direction générale</strong><br><span style="font-size:11px;color:var(--text-muted)">Claire Favre — DG</span></td>
+                  <td>1</td>
+                  <td style="font-size:12px">Cohérence mission / croissance</td>
+                  <td>Pilotage rigoureux, KPI consolidés</td>
+                  <td><span class="pac-badge pac-badge-format">Comité hebdo</span></td>
+                  <td><span class="priority-dot"><span class="dot dot-critical"></span>Critique</span></td>
+                </tr>
+                <tr style="background:#FDFCFB">
+                  <td><strong>Commerciaux historiques</strong><br><span style="font-size:11px;color:var(--text-muted)">6 personnes — cible prioritaire</span></td>
+                  <td>6</td>
+                  <td style="font-size:12px">Sentiment de dilution, déclassement implicite</td>
+                  <td>#4 — Épine dorsale du projet</td>
+                  <td><span class="pac-badge pac-badge-cible">1-1 + plénières</span></td>
+                  <td><span class="priority-dot"><span class="dot dot-critical"></span>Critique</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Nouveaux recrutés</strong><br><span style="font-size:11px;color:var(--text-muted)">+6 sur 12 mois</span></td>
+                  <td>+6</td>
+                  <td style="font-size:12px">Intégration culture éthique NGL</td>
+                  <td>#2 — Ambassadeur éthique</td>
+                  <td><span class="pac-badge pac-badge-format">Onboarding + mentor</span></td>
+                  <td><span class="priority-dot"><span class="dot dot-high"></span>Élevée</span></td>
+                </tr>
+                <tr style="background:#FDFCFB">
+                  <td><strong>Fonctions support métier</strong><br><span style="font-size:11px;color:var(--text-muted)">R&D, juridique, UX, cloud</span></td>
+                  <td>35</td>
+                  <td style="font-size:12px">Surcharge de travail, perte de focus R&D</td>
+                  <td>#3 — Transformation pilotée et réversible</td>
+                  <td><span class="pac-badge pac-badge-cible">Newsletter + Slack</span></td>
+                  <td><span class="priority-dot"><span class="dot dot-medium"></span>Moyenne</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Fonctions transverses</strong><br><span style="font-size:11px;color:var(--text-muted)">RH, finance, ops</span></td>
+                  <td>17</td>
+                  <td style="font-size:12px">Impact sur charge administrative et budget</td>
+                  <td>#1 — NGL grandit pour porter sa mission</td>
+                  <td><span class="pac-badge pac-badge-format">Plénière + intranet</span></td>
+                  <td><span class="priority-dot"><span class="dot dot-medium"></span>Moyenne</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="padding:12px 20px;background:#FAFBFC;border-top:1px solid var(--border);font-size:12px;color:var(--text-muted)">
+            ⚠️ <strong>Focus critique :</strong> les 6 commerciaux historiques concentrent 60 % de l'effort de communication sur les 6 premiers mois. Chaque commercial historique devient mentor d'un nouveau recruté et bénéficie du parcours "Ambassadeur éthique" certifiant.
+          </div>
+        </div>
+
+        <!-- 4 phases timeline -->
+        <div class="card" style="margin-bottom:24px">
+          <div class="card-header">
+            <span class="card-title">Plan de déploiement — 4 phases · 12 mois</span>
+          </div>
+          <div class="card-body-padded">
+            <div class="phases-timeline">
+
+              <div class="phase-item">
+                <div class="phase-item-header">
+                  <span class="phase-pill" style="background:var(--accent)">Phase 1</span>
+                  <span class="phase-item-title">Préparation & alignement</span>
+                  <span class="phase-period-tag">T1 2025 · 4 semaines</span>
+                </div>
+                <div class="phase-actions">
+                  <div class="phase-action-card">
+                    <div class="pac-title">Atelier de cadrage DG + Dir. commerciale</div>
+                    <div class="pac-desc">Définir le narratif, les messages clés et les lignes rouges. Alignement Codir avant toute communication.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-date">S1–S2</span><span class="pac-badge pac-badge-format">Livrable : note 1 page</span></div>
+                  </div>
+                  <div class="phase-action-card">
+                    <div class="pac-title">Validation du calendrier de communication</div>
+                    <div class="pac-desc">Rétroplanning 12 mois calé sur les jalons recrutement et onboarding 30/60/90 jours.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-date">S3</span><span class="pac-badge pac-badge-cible">Dir. commerciale</span></div>
+                  </div>
+                  <div class="phase-action-card" style="border-left:3px solid var(--danger)">
+                    <div class="pac-title">⚡ Brief confidentiel — 6 commerciaux historiques</div>
+                    <div class="pac-desc">Les informer EN PREMIER. Recueillir leurs craintes. Signal de respect et de reconnaissance capital pour l'adhésion.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-date">S4</span><span class="pac-badge pac-badge-urgent">Priorité absolue</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="phase-item">
+                <div class="phase-item-header">
+                  <span class="phase-pill" style="background:var(--accent2)">Phase 2</span>
+                  <span class="phase-item-title">Lancement officiel</span>
+                  <span class="phase-period-tag">Début T2 2025</span>
+                </div>
+                <div class="phase-actions">
+                  <div class="phase-action-card">
+                    <div class="pac-title">🎤 Kick-off plénière (1 h)</div>
+                    <div class="pac-desc">DG → présentation organisation DAS → témoignage terrain → Q&A 30 min. Message de clôture : « Nous ne changeons pas ce que nous sommes, nous changeons d'échelle. »</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-cible">58 collaborateurs</span><span class="pac-badge pac-badge-format">Présentiel + visio</span></div>
+                  </div>
+                  <div class="phase-action-card">
+                    <div class="pac-title">📧 Email de lancement DG</div>
+                    <div class="pac-desc">4 chiffres clés (6→12, 4 DAS, 12–18 mois, 30,5 M€) + lien dossier-projet + lien FAQ Notion + calendrier.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-cible">Tous</span><span class="pac-badge pac-badge-format">HTML signé DG</span></div>
+                  </div>
+                  <div class="phase-action-card">
+                    <div class="pac-title">❓ FAQ interne (10 questions)</div>
+                    <div class="pac-desc">Questions traitées : « Mon poste change ? », « Pourquoi recruter autant ? », « Y a-t-il un risque de licenciement ? » etc.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-cible">Priorité : commerciaux + R&D</span><span class="pac-badge pac-badge-format">Notion / Wiki</span></div>
+                  </div>
+                  <div class="phase-action-card">
+                    <div class="pac-title">🖼️ Poster A2 — Trajectoire NGL 2025–2028</div>
+                    <div class="pac-desc">Visuel de synthèse : 4 DAS, 4 piliers de valeur, objectif 80 comptes. Présence visuelle quotidienne au siège.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-cible">Espaces communs</span><span class="pac-badge pac-badge-format">4 exemplaires · 400 €</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="phase-item">
+                <div class="phase-item-header">
+                  <span class="phase-pill" style="background:var(--accent-orange)">Phase 3</span>
+                  <span class="phase-item-title">Accompagnement du déploiement</span>
+                  <span class="phase-period-tag">T2 → T4 2025 · 9 mois</span>
+                </div>
+                <div class="phase-actions">
+                  <div class="phase-action-card">
+                    <div class="pac-title">M1 — CRM déployé + 2 premiers commerciaux</div>
+                    <div class="pac-desc">Email de bienvenue des 2 recrues à toute l'équipe (présentation, DAS, binôme). Point CRM dans Flash Veille.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-format">Email + newsletter</span></div>
+                  </div>
+                  <div class="phase-action-card">
+                    <div class="pac-title">M2 — Dépôt AO HospitalNet Belgique</div>
+                    <div class="pac-desc">« Notre premier AO structuré est soumis. » Mise en valeur des 6 contributeurs nommés. Signal de fierté collective.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-format">Newsletter + Slack</span></div>
+                  </div>
+                  <div class="phase-action-card">
+                    <div class="pac-title">M3 — Bilan intégration 30/60/90</div>
+                    <div class="pac-desc">Témoignage anonymisé des recrues. Partage des indicateurs agrégés d'intégration (score onboarding cible > 8/10).</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-cible">Rétrospective trimestrielle</span></div>
+                  </div>
+                  <div class="phase-action-card">
+                    <div class="pac-title">M4+ — Rubrique mensuelle Flash Veille</div>
+                    <div class="pac-desc">1 KPI du mois + 1 fait marquant + 1 témoignage terrain. Format court (3 lignes max). Principe de sobriété éditoriale.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-format">Mensuel · continu</span></div>
+                  </div>
+                  <div class="phase-action-card">
+                    <div class="pac-title">M9 — Bilan semestriel plénière</div>
+                    <div class="pac-desc">Résultats visuels à toute l'entreprise. « Cas client du trimestre. » Ambassadeur éthique mis en lumière.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-cible">Plénière 30 min</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="phase-item">
+                <div class="phase-item-header">
+                  <span class="phase-pill" style="background:var(--sidebar-bg)">Phase 4</span>
+                  <span class="phase-item-title">Ancrage & capitalisation</span>
+                  <span class="phase-period-tag">T1–T2 2026</span>
+                </div>
+                <div class="phase-actions">
+                  <div class="phase-action-card">
+                    <div class="pac-title">Bilan d'étape 12 mois</div>
+                    <div class="pac-desc">KPI atteints vs plan. Écarts analysés. Leçons apprises. Recommandations pour les vagues 2 et 3.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-format">Rapport 5 pages → DG</span></div>
+                  </div>
+                  <div class="phase-action-card">
+                    <div class="pac-title">REX des 6 premiers recrutés</div>
+                    <div class="pac-desc">Ce qui a fonctionné, ce qui manquait, ce qu'il faut améliorer. Intégré au dossier-projet v2.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-format">Synthèse 2 pages</span></div>
+                  </div>
+                  <div class="phase-action-card">
+                    <div class="pac-title">Ritualisation définitive</div>
+                    <div class="pac-desc">Les 4 rituels managériaux passent du statut « nouveauté » au statut « fonctionnement courant ». Fin du projet, début de l'organisation.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-cible">Procédures RH standard</span></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI de succès -->
+        <div class="card" style="margin-bottom:24px">
+          <div class="card-header">
+            <span class="card-title">Indicateurs de succès du plan</span>
+            <span style="font-size:12px;color:var(--text-muted)">Mesurés mois par mois — seuils d'alerte définis</span>
+          </div>
+          <div class="card-body-padded">
+            <div class="kpi-targets-row">
+              <div class="kpi-target-card">
+                <div class="kpi-target-value">&gt; 90 %</div>
+                <div class="kpi-target-label">Taux de lecture des emails clés (launch + bilans)</div>
+              </div>
+              <div class="kpi-target-card">
+                <div class="kpi-target-value">&gt; 85 %</div>
+                <div class="kpi-target-label">Participation aux temps forts (kick-off, plénières)</div>
+              </div>
+              <div class="kpi-target-card">
+                <div class="kpi-target-value">&gt; 100</div>
+                <div class="kpi-target-label">Vues mensuelles FAQ projet Notion</div>
+              </div>
+              <div class="kpi-target-card">
+                <div class="kpi-target-value">&gt; 7/10</div>
+                <div class="kpi-target-label">Score de sentiment équipe historique (toutes les 8 sem.)</div>
+              </div>
+            </div>
+            <div style="background:#FEF9E7;border-radius:8px;padding:12px 16px;font-size:12px;color:#7D6608;border:1px solid #F9E79F">
+              ⚠️ <strong>Seuil d'alerte :</strong> si le score de sentiment de l'équipe historique descend sous 7/10, un plan correctif est déclenché dans les 72h (entretien individuel DG + manager + personne concernée).
+            </div>
+          </div>
+        </div>
+
+        <!-- Budget -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Budget détaillé — Plan de communication interne</span>
+            <span style="font-size:12px;color:var(--text-muted)">T1 2025 → T1 2026 · 0,02 % du CA cible 2025</span>
+          </div>
+          <div class="card-body" style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr><th>Poste</th><th>Coût</th><th>Fréquence</th><th>Justification</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Conception supports graphiques (affiches, infographies, gabarits)</td><td><strong>1 200 €</strong></td><td>Ponctuel</td><td>Posters A2, charte visuelle projet, deck kick-off</td></tr>
+                <tr><td>Événementiel interne (kick-off + 3 plénières trimestrielles)</td><td><strong>1 200 €</strong></td><td>4 événements/an</td><td>Signal fort de lancement + rituels de cohésion</td></tr>
+                <tr><td>Goodies « Ambassadeurs éthiques » (carnets sérigraphiés)</td><td><strong>400 €</strong></td><td>12 unités</td><td>Reconnaissance symbolique, fédération de la communauté</td></tr>
+                <tr><td>Outils numériques (Notion licences + templates sondages)</td><td><strong>200 €</strong></td><td>Annuel</td><td>FAQ vivante, plateforme feedback anonyme</td></tr>
+                <tr style="background:#F8FAFC"><td><strong>TOTAL</strong></td><td><strong>3 000 €</strong></td><td>12 mois</td><td><strong>0,02 % du CA cible 2025 (14,5 M€)</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div><!-- /com-interne -->
+
+      <!-- ========== EXTERNE ========== -->
+      <div class="com-section" id="com-externe">
+
+        <!-- Bannière -->
+        <div style="background:linear-gradient(135deg,#0F3460,#16213E);border-radius:12px;padding:20px 28px;margin-bottom:24px;display:flex;align-items:flex-start;gap:20px">
+          <div style="font-size:32px;flex-shrink:0">🌐</div>
+          <div>
+            <div style="color:#fff;font-size:15px;font-weight:700;margin-bottom:6px">Objectif du plan de communication externe</div>
+            <div style="color:#a0b4c8;font-size:13px;line-height:1.6">Asseoir la <strong style="color:#fff">crédibilité et la visibilité de NGL</strong> auprès des décideurs publics, partenaires institutionnels et prescripteurs avant l'échéance AI Act (août 2026). Transformer la conformité réglementaire en <strong style="color:#fff">avantage concurrentiel actif</strong>.</div>
+            <div style="margin-top:12px;display:flex;gap:16px;flex-wrap:wrap">
+              <span style="background:rgba(255,255,255,0.08);color:#a0b4c8;font-size:11px;font-weight:600;padding:4px 12px;border-radius:6px">3 cibles externes</span>
+              <span style="background:rgba(255,255,255,0.08);color:#a0b4c8;font-size:11px;font-weight:600;padding:4px 12px;border-radius:6px">3 phases · 18 mois</span>
+              <span style="background:rgba(255,255,255,0.08);color:#a0b4c8;font-size:11px;font-weight:600;padding:4px 12px;border-radius:6px">Piloté : Dir. commerciale</span>
+              <span style="background:rgba(255,255,255,0.08);color:#a0b4c8;font-size:11px;font-weight:600;padding:4px 12px;border-radius:6px">Échéance AI Act : août 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Message central externe -->
+        <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:24px;border-left:4px solid var(--accent)">
+          <div style="font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Message central externe</div>
+          <div style="font-size:16px;font-weight:700;color:var(--text-primary);font-style:italic;line-height:1.5">« NGL est le partenaire IA des organisations publiques qui ne veulent pas choisir entre performance et conformité. »</div>
+          <div style="font-size:12px;color:var(--text-secondary);margin-top:8px;line-height:1.5">CLARITY est la seule solution IA explicable, auditée ISO 42001 et certifiable CE IIa, conçue pour les AO high-risk du secteur public européen. La conformité n'est pas un frein — c'est l'avantage décisif de NGL.</div>
+        </div>
+
+        <!-- 3 cibles externes -->
+        <div class="card" style="margin-bottom:24px">
+          <div class="card-header">
+            <span class="card-title">Cartographie des 3 cibles externes</span>
+          </div>
+          <div class="card-body-padded">
+            <div class="ext-cibles-grid">
+              <div class="ext-cible-card">
+                <div class="ext-cible-icon">🏥</div>
+                <div class="ext-cible-title">Décideurs publics — acheteurs</div>
+                <div class="ext-cible-count">DSI hospitaliers · DGESCO · Cours administratives · Collectivités · Agences EU</div>
+                <div class="ext-cible-msg">« Je cherche une IA qui passe l'audit de conformité et qui se justifie devant mes tutelles. »</div>
+                <div class="ext-cible-canal"><strong>Canaux :</strong> Salons sectoriels (Health AI Congress, EDUCATEC), réponses AO, rendez-vous CPO/DSI, référencement TED/BOAMP</div>
+              </div>
+              <div class="ext-cible-card">
+                <div class="ext-cible-icon">🤝</div>
+                <div class="ext-cible-title">Partenaires & réseaux institutionnels</div>
+                <div class="ext-cible-count">CNECT (UE) · EurAI · Gaia-X · Labo UCLouvain · ESN partenaires</div>
+                <div class="ext-cible-msg">« Je veux co-construire ou co-référencer avec une IA éthique souveraine. »</div>
+                <div class="ext-cible-canal"><strong>Canaux :</strong> Événements EU Brussels, conventions EurAI, partenariats académiques, co-publications, co-candidatures Horizon Europe</div>
+              </div>
+              <div class="ext-cible-card">
+                <div class="ext-cible-icon">📰</div>
+                <div class="ext-cible-title">Presse spécialisée & prescripteurs</div>
+                <div class="ext-cible-count">Acteurs publics (revue), Decideo, Maddyness, Contexte EU, LinkedIn IA</div>
+                <div class="ext-cible-msg">« Je cherche des cas concrets d'IA éthique déployée dans le secteur public. »</div>
+                <div class="ext-cible-canal"><strong>Canaux :</strong> Communiqués de presse ciblés, tribune LinkedIn DG, étude de cas clients (post-AO gagné), interview expert</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 phases externes -->
+        <div class="card" style="margin-bottom:24px">
+          <div class="card-header">
+            <span class="card-title">Plan de déploiement externe — 3 phases · 18 mois</span>
+          </div>
+          <div class="card-body-padded">
+            <div class="phases-timeline">
+
+              <div class="phase-item">
+                <div class="phase-item-header">
+                  <span class="phase-pill" style="background:var(--accent)">Phase 1</span>
+                  <span class="phase-item-title">Visibilité & positionnement</span>
+                  <span class="phase-period-tag">T2 2025 · 3 mois</span>
+                </div>
+                <div class="phase-actions">
+                  <div class="phase-action-card">
+                    <div class="pac-title">Refonte du discours commercial CLARITY</div>
+                    <div class="pac-desc">Pitch deck NGL actualisé centré conformité AI Act. Battlecard concurrents (vs HumanSoft, Sineos, Cognicity). 1 page par DAS.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-format">Kit commercial</span><span class="pac-badge pac-badge-date">Avr. 2025</span></div>
+                  </div>
+                  <div class="phase-action-card">
+                    <div class="pac-title">Activation LinkedIn — compte NGL + DG</div>
+                    <div class="pac-desc">2 publications/semaine : veille AI Act commentée, coulisses CLARITY, chiffres performance AO. Objectif : 5 000 abonnés page NGL à fin 2025.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-format">Contenu organique</span><span class="pac-badge pac-badge-date">Continu</span></div>
+                  </div>
+                  <div class="phase-action-card">
+                    <div class="pac-title">Présence Health AI Congress & EDUCATEC</div>
+                    <div class="pac-desc">Stand + démonstration live CLARITY. Objectif : 30 contacts qualifiés DSI/DGA par salon. Activation réseau EurAI.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-cible">Acheteurs publics</span><span class="pac-badge pac-badge-date">T2–T3 2025</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="phase-item">
+                <div class="phase-item-header">
+                  <span class="phase-pill" style="background:var(--accent2)">Phase 2</span>
+                  <span class="phase-item-title">Engagement & preuve</span>
+                  <span class="phase-period-tag">T3–T4 2025 · 6 mois</span>
+                </div>
+                <div class="phase-actions">
+                  <div class="phase-action-card">
+                    <div class="pac-title">Premier cas client publié (post-AO gagné)</div>
+                    <div class="pac-desc">Étude de cas EaaS KYC ou HospitalNet Belgique. Format : PDF 2 pages + post LinkedIn + extrait newsletter partenaires.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-urgent">Dépend résultat AO</span><span class="pac-badge pac-badge-format">Content marketing</span></div>
+                  </div>
+                  <div class="phase-action-card">
+                    <div class="pac-title">Webinaire « IA éthique & AI Act — ce que ça change pour vos AO »</div>
+                    <div class="pac-desc">Format 1h · 200 inscrits cibles (DSI, DGA, responsables conformité secteur public). Co-animé avec un partenaire juridique ou académique.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-cible">Acheteurs + presse</span><span class="pac-badge pac-badge-date">Oct. 2025</span></div>
+                  </div>
+                  <div class="phase-action-card">
+                    <div class="pac-title">Candidature référencement EurAI & Gaia-X</div>
+                    <div class="pac-desc">Dossier de référencement NGL dans les catalogues européens IA souveraine. Label de crédibilité pour les AO internationaux.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-cible">Réseaux EU</span><span class="pac-badge pac-badge-date">T4 2025</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="phase-item" style="padding-bottom:0">
+                <div class="phase-item-header">
+                  <span class="phase-pill" style="background:var(--accent-orange)">Phase 3</span>
+                  <span class="phase-item-title">Référencement & autorité</span>
+                  <span class="phase-period-tag">T1–T2 2026 · avant AI Act août 2026</span>
+                </div>
+                <div class="phase-actions">
+                  <div class="phase-action-card" style="border-left:3px solid var(--danger)">
+                    <div class="pac-title">⚡ Annonce certification ISO 42001 + CE IIa</div>
+                    <div class="pac-desc">Communiqué de presse national + post LinkedIn + email partenaires. Positionnement « premier acteur IA public certifié ISO 42001 en France ».</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-urgent">Avant août 2026</span><span class="pac-badge pac-badge-format">CP + digital</span></div>
+                  </div>
+                  <div class="phase-action-card">
+                    <div class="pac-title">Rapport annuel « NGL — IA éthique en pratique »</div>
+                    <div class="pac-desc">Bilan chiffré : AO remportés, CA, comptes actifs, empreinte carbone GreenMeter. Diffusion DSI, partenaires EU, presse.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-format">PDF 10 pages</span><span class="pac-badge pac-badge-date">T1 2026</span></div>
+                  </div>
+                  <div class="phase-action-card">
+                    <div class="pac-title">Programme Ambassadeurs clients (3 cas témoins)</div>
+                    <div class="pac-desc">3 clients phares acceptent de témoigner en conférence/presse. Format testimonial vidéo 90 sec. + citation pour supports AO.</div>
+                    <div class="pac-meta"><span class="pac-badge pac-badge-cible">3 clients référents</span><span class="pac-badge pac-badge-date">T2 2026</span></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Tableau canaux externes -->
+        <div class="card" style="margin-bottom:24px">
+          <div class="card-header">
+            <span class="card-title">Canaux et supports par cible</span>
+          </div>
+          <div class="card-body" style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr><th>Canal / Support</th><th>Cible prioritaire</th><th>Fréquence</th><th>Responsable</th><th>KPI cible</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>LinkedIn NGL + profil DG</strong></td><td>Décideurs publics + presse</td><td>2×/semaine</td><td>Dir. marketing / DG</td><td>5 000 abonnés fin 2025</td></tr>
+                <tr><td><strong>Salons sectoriels</strong> (Health AI, EDUCATEC)</td><td>Acheteurs publics DSI/DGA</td><td>2 salons/an</td><td>Resp. AO + commerciaux DAS</td><td>30 contacts qualifiés/salon</td></tr>
+                <tr><td><strong>Webinaires thématiques</strong></td><td>Acheteurs + prescripteurs</td><td>2/an</td><td>Dir. commerciale + R&D</td><td>200 inscrits / 40 % taux présence</td></tr>
+                <tr><td><strong>Communiqués de presse</strong></td><td>Presse spécialisée</td><td>Jalons clés</td><td>Dir. com. externe</td><td>3 articles/an minimum</td></tr>
+                <tr><td><strong>Catalogue TED / BOAMP</strong></td><td>Acheteurs institutionnels EU</td><td>Continu</td><td>Resp. AO</td><td>100 % AO >1 M€ référencés</td></tr>
+                <tr><td><strong>Référencements EurAI / Gaia-X</strong></td><td>Partenaires EU</td><td>Ponctuel (T4 2025)</td><td>Dir. partenariats</td><td>Labellisation avant fin 2025</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Budget externe -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Budget estimatif — Communication externe</span>
+            <span style="font-size:12px;color:var(--text-muted)">Ordre de grandeur · à préciser avec Dir. commerciale</span>
+          </div>
+          <div class="card-body" style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr><th>Poste</th><th>Coût estimé</th><th>Fréquence</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Conception kit commercial (pitch, battlecard, 4 fiches DAS)</td><td>2 500 €</td><td>Ponctuel + mise à jour annuelle</td></tr>
+                <tr><td>Participation salons sectoriels (2 salons · stand + frais)</td><td>8 000 €</td><td>Annuel</td></tr>
+                <tr><td>Webinaires (plateforme, animation, promotion)</td><td>1 500 €</td><td>Annuel (2 webinaires)</td></tr>
+                <tr><td>Communiqués de presse + diffusion ciblée</td><td>2 000 €</td><td>Annuel (3–4 CP)</td></tr>
+                <tr><td>Production cas clients / témoignages vidéo</td><td>3 000 €</td><td>Ponctuel (3 cas)</td></tr>
+                <tr><td>Rapport annuel NGL (design + impression + diffusion)</td><td>1 500 €</td><td>Annuel</td></tr>
+                <tr><td>Gestion LinkedIn (outil scheduling + contenus)</td><td>500 €</td><td>Annuel</td></tr>
+                <tr style="background:#F8FAFC"><td><strong>TOTAL estimé</strong></td><td><strong>~19 000 €</strong></td><td><strong>Budget annuel · ~1,3 % du CA 2025</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="padding:12px 20px;background:#EBF5FB;border-top:1px solid var(--border);font-size:12px;color:#1A5276">
+            ℹ️ <strong>Note :</strong> Ce budget est construit en cohérence avec le budget marketing global de 350 k€ (3 % CA 2025) défini en Mission 2. La communication externe représente ici environ 5,4 % de cette enveloppe — le solde couvrant les actions commerciales directes (salaires, frais terrain, CRM).
+          </div>
+        </div>
+
+      </div><!-- /com-externe -->
+
+    </div><!-- /tab-plancom -->
+
   </main>
 </div>
 
@@ -846,7 +1568,8 @@ function switchTab(tabId, el) {
   const titles = {
     pipeline: "Pipeline des appels d'offres",
     performance: "Performance commerciale",
-    risques: "Matrice des risques"
+    risques: "Matrice des risques",
+    plancom: "Plan de communication"
   };
   document.getElementById('topbar-title').textContent = titles[tabId];
 
@@ -856,9 +1579,25 @@ function switchTab(tabId, el) {
     window.chartsInit = true;
   }
 
+  // Reset com sub-tabs when navigating away and back
+  if (tabId === 'plancom') {
+    const activeComSection = document.querySelector('.com-section.active');
+    if (!activeComSection) {
+      document.getElementById('com-interne').classList.add('active');
+      document.querySelectorAll('.com-tab-btn')[0].classList.add('active');
+    }
+  }
+
   // Close mobile sidebar
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('overlay').classList.remove('open');
+}
+
+function switchComTab(sectionId, btn) {
+  document.querySelectorAll('.com-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.com-tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('com-' + sectionId).classList.add('active');
+  btn.classList.add('active');
 }
 
 function toggleSidebar() {
