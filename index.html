@@ -6,7 +6,6 @@
 <title>NGL - Tableau de bord</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js">
-
 </script>
 <style>
 :root {
@@ -31,9 +30,7 @@
   --sidebar-width: 260px;
   --header-height: 64px;
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--bg);
@@ -42,7 +39,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-
 /* ========== SIDEBAR ========== */
 .sidebar {
   position: fixed;
@@ -54,7 +50,6 @@ body {
   z-index: 100;
   transition: transform 0.3s ease;
 }
-
 .sidebar-header {
   padding: 20px 24px;
   border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -63,7 +58,6 @@ body {
   gap: 14px;
   min-height: var(--header-height);
 }
-
 .sidebar-logo {
   width: 40px; height: 40px;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
@@ -73,12 +67,10 @@ body {
   font-weight: 700; font-size: 14px; color: #fff;
   flex-shrink: 0;
 }
-
 /* Logo image: décommenter et remplacer src pour utiliser votre logo */
 .sidebar-logo img {
   width: 100%; height: 100%; object-fit: contain; border-radius: 10px;
 }
-
 .sidebar-brand {
   display: flex; flex-direction: column;
 }
@@ -88,7 +80,6 @@ body {
 .sidebar-brand-sub {
   font-size: 11px; color: var(--sidebar-text); margin-top: 2px;
 }
-
 .sidebar-nav {
   padding: 16px 12px;
   flex: 1;
@@ -96,7 +87,6 @@ body {
   flex-direction: column;
   gap: 4px;
 }
-
 .sidebar-section-label {
   font-size: 10px;
   font-weight: 700;
@@ -106,7 +96,6 @@ body {
   padding: 16px 12px 8px;
   opacity: 0.6;
 }
-
 .nav-item {
   display: flex; align-items: center; gap: 12px;
   padding: 11px 14px;
@@ -131,7 +120,6 @@ body {
   font-size: 11px; font-weight: 700;
   padding: 2px 8px; border-radius: 10px;
 }
-
 .sidebar-footer {
   padding: 16px 20px;
   border-top: 1px solid rgba(255,255,255,0.06);
@@ -146,7 +134,6 @@ body {
 }
 .sidebar-user-name { font-size: 13px; color: #fff; font-weight: 600; }
 .sidebar-user-role { font-size: 11px; color: var(--sidebar-text); }
-
 /* ========== MAIN ========== */
 .main {
   margin-left: var(--sidebar-width);
@@ -155,7 +142,6 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
 .topbar {
   height: var(--header-height);
   background: var(--card-bg);
@@ -172,16 +158,13 @@ body {
   background: var(--success);
   box-shadow: 0 0 6px rgba(39,174,96,0.4);
 }
-
 .mobile-toggle {
   display: none;
   background: none; border: none;
   font-size: 24px; color: var(--text-primary); cursor: pointer;
   margin-right: 12px;
 }
-
 .content { padding: 28px 32px; flex: 1; }
-
 /* ========== KPI CARDS ========== */
 .kpi-grid {
   display: grid;
@@ -203,7 +186,6 @@ body {
 .kpi-up { color: var(--success); }
 .kpi-down { color: var(--danger); }
 .kpi-neutral { color: var(--text-muted); }
-
 /* ========== TABLES ========== */
 .card {
   background: var(--card-bg);
@@ -220,7 +202,6 @@ body {
 .card-title { font-size: 15px; font-weight: 700; color: var(--text-primary); }
 .card-body { padding: 0; }
 .card-body-padded { padding: 24px; }
-
 table { width: 100%; border-collapse: collapse; }
 thead th {
   padding: 12px 16px;
@@ -240,7 +221,6 @@ tbody td {
 }
 tbody tr:last-child td { border-bottom: none; }
 tbody tr:hover { background: #F8FAFC; }
-
 /* Status badges */
 .badge {
   display: inline-block;
@@ -255,7 +235,6 @@ tbody tr:hover { background: #F8FAFC; }
 .badge-negotiation { background: #FEF5E7; color: var(--accent-orange); }
 .badge-won { background: #EAFAF1; color: var(--success); }
 .badge-lost { background: #FDEDEC; color: var(--danger); }
-
 .das-tag {
   display: inline-block;
   padding: 3px 8px;
@@ -267,7 +246,6 @@ tbody tr:hover { background: #F8FAFC; }
 .das-2 { background: #D6EAF8; color: #2874A6; }
 .das-3 { background: #D5F5E3; color: #1E8449; }
 .das-4 { background: #FEF5E7; color: #B7950B; }
-
 /* ========== RISK CARDS ========== */
 .risk-grid {
   display: grid;
@@ -287,7 +265,6 @@ tbody tr:hover { background: #F8FAFC; }
 .risk-card.risk-high { border-left-color: var(--warning); }
 .risk-card.risk-moderate { border-left-color: var(--accent); }
 .risk-card.risk-low { border-left-color: var(--success); }
-
 .risk-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .risk-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
 .risk-level { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
@@ -295,11 +272,9 @@ tbody tr:hover { background: #F8FAFC; }
 .risk-level-high { background: #FEF9E7; color: #B7950B; }
 .risk-level-moderate { background: #EBF5FB; color: var(--accent); }
 .risk-level-low { background: #EAFAF1; color: var(--success); }
-
 .risk-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 10px; }
 .risk-indicator { font-size: 11px; color: var(--text-muted); }
 .risk-indicator strong { color: var(--text-primary); }
-
 /* ========== PROGRESS BARS ========== */
 .progress-bar-bg {
   width: 100%; height: 6px; background: #E2E8F0; border-radius: 3px; overflow: hidden;
@@ -307,11 +282,9 @@ tbody tr:hover { background: #F8FAFC; }
 .progress-bar-fill {
   height: 100%; border-radius: 3px; transition: width 0.6s ease;
 }
-
 /* ========== CHART ========== */
 .chart-container { position: relative; height: 280px; }
 .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
-
 /* ========== TABS (inline for Performance) ========== */
 .inline-tabs { display: flex; gap: 0; margin-bottom: 20px; }
 .inline-tab {
@@ -325,7 +298,6 @@ tbody tr:hover { background: #F8FAFC; }
 .inline-tab.active {
   background: var(--accent); color: #fff; border-color: var(--accent);
 }
-
 /* ========== FOOTER ========== */
 .footer {
   margin-left: var(--sidebar-width);
@@ -335,11 +307,9 @@ tbody tr:hover { background: #F8FAFC; }
   display: flex; justify-content: space-between; align-items: center;
   font-size: 12px; color: var(--text-muted);
 }
-
 /* ========== HIDDEN SECTIONS ========== */
 .tab-content { display: none; }
 .tab-content.active { display: block; }
-
 /* ========== OVERLAY ========== */
 .sidebar-overlay {
   display: none;
@@ -347,14 +317,12 @@ tbody tr:hover { background: #F8FAFC; }
   background: rgba(0,0,0,0.5);
   z-index: 99;
 }
-
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1100px) {
   .kpi-grid { grid-template-columns: repeat(2, 1fr); }
   .charts-row { grid-template-columns: 1fr; }
   .risk-grid { grid-template-columns: 1fr; }
 }
-
 @media (max-width: 768px) {
   .sidebar { transform: translateX(-100%); }
   .sidebar.open { transform: translateX(0); }
@@ -369,11 +337,9 @@ tbody tr:hover { background: #F8FAFC; }
   table { font-size: 12px; }
   thead th, tbody td { padding: 10px 10px; }
 }
-
 @media (max-width: 480px) {
   .kpi-grid { grid-template-columns: 1fr; }
 }
-
 /* ========== PLAN DE COM ========== */
 .com-tabs-bar {
   display: flex;
@@ -401,10 +367,8 @@ tbody tr:hover { background: #F8FAFC; }
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 .com-tab-btn:not(.active):hover { background: var(--bg); color: var(--text-primary); }
-
 .com-section { display: none; }
 .com-section.active { display: block; animation: fadeIn 0.3s ease; }
-
 /* Messages clés */
 .msg-keys-grid {
   display: grid;
@@ -435,7 +399,6 @@ tbody tr:hover { background: #F8FAFC; }
 }
 .msg-key-title { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; font-style: italic; }
 .msg-key-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
-
 /* Timeline phases */
 .phases-timeline {
   position: relative;
@@ -502,7 +465,6 @@ tbody tr:hover { background: #F8FAFC; }
 .pac-badge-cible { background: #E8F8F5; color: #1a9a7c; }
 .pac-badge-urgent { background: #FDEDEC; color: var(--danger); }
 .pac-badge-date { background: #F0F3F7; color: var(--text-secondary); }
-
 /* KPI targets */
 .kpi-targets-row {
   display: grid;
@@ -528,7 +490,6 @@ tbody tr:hover { background: #F8FAFC; }
 .kpi-target-card:nth-child(4)::after { background: var(--danger); }
 .kpi-target-value { font-family: 'Space Mono', monospace; font-size: 26px; font-weight: 700; color: #fff; }
 .kpi-target-label { font-size: 11px; color: var(--sidebar-text); margin-top: 6px; line-height: 1.4; }
-
 /* Stakeholder table priority cell */
 .priority-dot {
   display: inline-flex; align-items: center; gap: 6px;
@@ -538,7 +499,6 @@ tbody tr:hover { background: #F8FAFC; }
 .dot-critical { background: var(--danger); }
 .dot-high { background: var(--warning); }
 .dot-medium { background: var(--accent); }
-
 /* External com cibles */
 .ext-cibles-grid {
   display: grid;
@@ -564,7 +524,6 @@ tbody tr:hover { background: #F8FAFC; }
 .ext-cible-msg { font-size: 12px; color: var(--text-secondary); line-height: 1.5; font-style: italic; border-left: 3px solid var(--border); padding-left: 10px; margin-bottom: 10px; }
 .ext-cible-canal { font-size: 11px; color: var(--text-muted); }
 .ext-cible-canal strong { color: var(--text-primary); }
-
 @media (max-width: 900px) {
   .msg-keys-grid { grid-template-columns: 1fr; }
   .kpi-targets-row { grid-template-columns: repeat(2, 1fr); }
@@ -575,7 +534,6 @@ tbody tr:hover { background: #F8FAFC; }
   .kpi-targets-row { grid-template-columns: 1fr 1fr; }
   .com-tab-btn { padding: 9px 16px; font-size: 13px; }
 }
-
 /* ========== ANIMATIONS ========== */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
@@ -589,10 +547,8 @@ tbody tr:hover { background: #F8FAFC; }
 </style>
 </head>
 <body>
-
 <!-- OVERLAY MOBILE -->
 <div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
-
 <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-header">
@@ -605,13 +561,12 @@ tbody tr:hover { background: #F8FAFC; }
       <span class="sidebar-brand-sub">Tableau de bord commercial</span>
     </div>
   </div>
-
   <nav class="sidebar-nav">
     <div class="sidebar-section-label">Navigation</div>
     <div class="nav-item active" data-tab="pipeline" onclick="switchTab('pipeline', this)">
       <span class="nav-icon">📊</span>
       <span>Pipeline AO</span>
-      <span class="nav-badge">6</span>
+      <span class="nav-badge">5</span>
     </div>
     <div class="nav-item" data-tab="performance" onclick="switchTab('performance', this)">
       <span class="nav-icon">📈</span>
@@ -622,20 +577,17 @@ tbody tr:hover { background: #F8FAFC; }
       <span>Risques</span>
       <span class="nav-badge" style="background:var(--warning)">3</span>
     </div>
-
     <div class="sidebar-section-label">Pilotage</div>
     <div class="nav-item" data-tab="crm" onclick="switchTab('crm', this)">
       <span class="nav-icon">👥</span>
       <span>Suivi collaborateurs</span>
     </div>
-
     <div class="sidebar-section-label">Communication</div>
     <div class="nav-item" data-tab="plancom" onclick="switchTab('plancom', this)">
       <span class="nav-icon">📣</span>
       <span>Plan de communication</span>
     </div>
   </nav>
-
   <div class="sidebar-footer">
     <div class="sidebar-avatar">CP</div>
     <div>
@@ -644,7 +596,6 @@ tbody tr:hover { background: #F8FAFC; }
     </div>
   </div>
 </aside>
-
 <!-- MAIN -->
 <div class="main">
   <!-- TOPBAR -->
@@ -658,16 +609,14 @@ tbody tr:hover { background: #F8FAFC; }
       <div class="topbar-dot" title="Système opérationnel"></div>
     </div>
   </header>
-
   <!-- CONTENT -->
   <main class="content">
-
     <!-- ====== TAB: PIPELINE ====== -->
     <div class="tab-content active" id="tab-pipeline">
       <div class="kpi-grid">
         <div class="kpi-card">
           <div class="kpi-label">AO en cours</div>
-          <div class="kpi-value">6</div>
+          <div class="kpi-value">5</div>
           <div class="kpi-sub kpi-up">↑ +2 ce trimestre</div>
         </div>
         <div class="kpi-card">
@@ -686,7 +635,6 @@ tbody tr:hover { background: #F8FAFC; }
           <div class="kpi-sub kpi-neutral">AO HospitalNet BE</div>
         </div>
       </div>
-
       <!-- Pipeline par statut -->
       <div class="card">
         <div class="card-header">
@@ -753,7 +701,7 @@ tbody tr:hover { background: #F8FAFC; }
                 <td><strong>Ville durable IA</strong> - Chambéry Agglo</td>
                 <td><span class="das-tag das-4">DAS 4 Collectivités</span></td>
                 <td>🇫🇷 France</td>
-                <td><strong>2,8 M€</strong></td>
+                <td><strong>3,5 M€</strong></td>
                 <td><span class="badge badge-detected">Détecté</span></td>
                 <td>T2 2027</td>
                 <td>
@@ -777,25 +725,11 @@ tbody tr:hover { background: #F8FAFC; }
                   </div>
                 </td>
               </tr>
-              <tr>
-                <td><strong>IA sobriété énergétique</strong> - Logroño</td>
-                <td><span class="das-tag das-4">DAS 4 Collectivités</span></td>
-                <td>🇪🇸 Espagne</td>
-                <td><strong>1,2 M€</strong></td>
-                <td><span class="badge badge-qualified">Qualifié</span></td>
-                <td>T4 2025</td>
-                <td>
-                  <div style="display:flex;align-items:center;gap:8px">
-                    <div class="progress-bar-bg" style="width:80px"><div class="progress-bar-fill" style="width:40%;background:var(--warning)"></div></div>
-                    <span style="font-size:12px;font-weight:600">40 %</span>
-                  </div>
-                </td>
-              </tr>
+              
             </tbody>
           </table>
         </div>
       </div>
-
       <!-- Pipeline funnel visuel -->
       <div class="card">
         <div class="card-header">
@@ -804,7 +738,7 @@ tbody tr:hover { background: #F8FAFC; }
         <div class="card-body-padded">
           <div style="display:flex;gap:8px;align-items:end;height:48px">
             <div style="flex:2;background:#EBF5FB;border-radius:6px;height:100%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--accent)">Détecté (2)</div>
-            <div style="flex:2;background:#E8F8F5;border-radius:6px;height:85%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--accent2)">Qualifié (2)</div>
+            <div style="flex:2;background:#E8F8F5;border-radius:6px;height:85%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--accent2)">Qualifié (1)</div>
             <div style="flex:1;background:#FEF9E7;border-radius:6px;height:70%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#B7950B">Soumis (1)</div>
             <div style="flex:1;background:#FEF5E7;border-radius:6px;height:55%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--accent-orange)">Négo (1)</div>
             <div style="flex:0.5;background:#EAFAF1;border-radius:6px;height:40%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--success)">Gagné (0)</div>
@@ -812,7 +746,6 @@ tbody tr:hover { background: #F8FAFC; }
         </div>
       </div>
     </div>
-
     <!-- ====== TAB: PERFORMANCE ====== -->
     <div class="tab-content" id="tab-performance">
       <div class="kpi-grid">
@@ -837,7 +770,6 @@ tbody tr:hover { background: #F8FAFC; }
           <div class="kpi-sub kpi-up">↑ Objectif > 45 %</div>
         </div>
       </div>
-
       <!-- Charts -->
       <div class="charts-row">
         <div class="card">
@@ -861,7 +793,6 @@ tbody tr:hover { background: #F8FAFC; }
           </div>
         </div>
       </div>
-
       <!-- KPI Table -->
       <div class="card">
         <div class="card-header">
@@ -922,9 +853,9 @@ tbody tr:hover { background: #F8FAFC; }
               </tr>
               <tr>
                 <td><strong>Badge GreenMeter</strong></td>
-                <td>100 % vert</td>
-                <td>100 %</td>
-                <td><span class="badge badge-won">✓ Atteint</span></td>
+                <td>≤ 0,44 g · 🟢 Vert (2026)</td>
+                <td>0,62 g · 🟠 Orange</td>
+                <td><span class="badge badge-submitted">En cours</span></td>
                 <td class="kpi-neutral" style="font-weight:600">= Stable</td>
                 <td>R&D / GreenMeter</td>
               </tr>
@@ -933,7 +864,6 @@ tbody tr:hover { background: #F8FAFC; }
         </div>
       </div>
     </div>
-
     <!-- ====== TAB: RISQUES ====== -->
     <div class="tab-content" id="tab-risques">
       <div class="kpi-grid">
@@ -958,7 +888,6 @@ tbody tr:hover { background: #F8FAFC; }
           <div class="kpi-sub kpi-up">Cybersécurité maîtrisée</div>
         </div>
       </div>
-
       <div class="risk-grid">
         <div class="risk-card risk-critical">
           <div class="risk-header">
@@ -969,7 +898,6 @@ tbody tr:hover { background: #F8FAFC; }
           <div class="risk-indicator"><strong>Indicateur :</strong> Taux de postes vacants, délai de recrutement</div>
           <div class="risk-indicator" style="margin-top:4px"><strong>Mitigation :</strong> Marque employeur, parcours atypiques, prime cooptation</div>
         </div>
-
         <div class="risk-card risk-critical">
           <div class="risk-header">
             <span class="risk-title">Évolution réglementaire imprévue</span>
@@ -979,7 +907,6 @@ tbody tr:hover { background: #F8FAFC; }
           <div class="risk-indicator"><strong>Indicateur :</strong> Alertes JOUE, CNIL, EU Gazette</div>
           <div class="risk-indicator" style="margin-top:4px"><strong>Mitigation :</strong> Veille juridique hebdomadaire (C. Deleuil)</div>
         </div>
-
         <div class="risk-card risk-high">
           <div class="risk-header">
             <span class="risk-title">Concurrence low-cost agressive</span>
@@ -989,7 +916,6 @@ tbody tr:hover { background: #F8FAFC; }
           <div class="risk-indicator"><strong>Indicateur :</strong> Analyse bimensuelle des tarifs concurrents</div>
           <div class="risk-indicator" style="margin-top:4px"><strong>Mitigation :</strong> Battlecard mise à jour trimestriellement</div>
         </div>
-
         <div class="risk-card risk-high">
           <div class="risk-header">
             <span class="risk-title">Dépassement budget marketing</span>
@@ -999,7 +925,6 @@ tbody tr:hover { background: #F8FAFC; }
           <div class="risk-indicator"><strong>Indicateur :</strong> Suivi mensuel dépenses vs budget prévu</div>
           <div class="risk-indicator" style="margin-top:4px"><strong>Mitigation :</strong> Reporting mensuel Direction financière</div>
         </div>
-
         <div class="risk-card risk-high">
           <div class="risk-header">
             <span class="risk-title">Adoption CRM insuffisante</span>
@@ -1009,7 +934,6 @@ tbody tr:hover { background: #F8FAFC; }
           <div class="risk-indicator"><strong>Indicateur :</strong> Taux d'utilisation CRM, qualité données</div>
           <div class="risk-indicator" style="margin-top:4px"><strong>Mitigation :</strong> Formation obligatoire, référent CRM interne</div>
         </div>
-
         <div class="risk-card risk-moderate">
           <div class="risk-header">
             <span class="risk-title">Obsolescence technologique rapide</span>
@@ -1019,7 +943,6 @@ tbody tr:hover { background: #F8FAFC; }
           <div class="risk-indicator"><strong>Indicateur :</strong> Veille open-source mensuelle (arXiv, GitLab)</div>
           <div class="risk-indicator" style="margin-top:4px"><strong>Mitigation :</strong> Labo Louvain, note technique mensuelle (M. Saidi)</div>
         </div>
-
         <div class="risk-card risk-moderate">
           <div class="risk-header">
             <span class="risk-title">Critiques sur la performance carbone</span>
@@ -1029,7 +952,6 @@ tbody tr:hover { background: #F8FAFC; }
           <div class="risk-indicator"><strong>Indicateur :</strong> Revue trimestrielle des rapports GreenMeter</div>
           <div class="risk-indicator" style="margin-top:4px"><strong>Mitigation :</strong> Certification ISO 14097-IA dès publication (2026)</div>
         </div>
-
         <div class="risk-card risk-low">
           <div class="risk-header">
             <span class="risk-title">Incident cybersécurité / RGPD</span>
@@ -1041,19 +963,15 @@ tbody tr:hover { background: #F8FAFC; }
         </div>
       </div>
     </div>
-
     <!-- ====== TAB: PLAN DE COMMUNICATION ====== -->
     <div class="tab-content" id="tab-plancom">
-
       <!-- Switcher Interne / Externe -->
       <div class="com-tabs-bar">
         <button class="com-tab-btn active" onclick="switchComTab('interne', this)">🏢 Communication interne</button>
         <button class="com-tab-btn" onclick="switchComTab('externe', this)">🌐 Communication externe</button>
       </div>
-
       <!-- ========== INTERNE ========== -->
       <div class="com-section active" id="com-interne">
-
         <!-- Bannière objectif -->
         <div style="background:var(--sidebar-bg);border-radius:12px;padding:20px 28px;margin-bottom:24px;display:flex;align-items:flex-start;gap:20px">
           <div style="font-size:32px;flex-shrink:0">🎯</div>
@@ -1062,13 +980,12 @@ tbody tr:hover { background: #F8FAFC; }
             <div style="color:var(--sidebar-text);font-size:13px;line-height:1.6">Faire de la transformation commerciale un <strong style="color:#fff">projet collectif de NGL</strong> - porté par tous, perçu comme cohérent avec la mission éthique de l'entreprise et générateur de fierté pour les équipes en place.</div>
             <div style="margin-top:12px;display:flex;gap:16px;flex-wrap:wrap">
               <span style="background:rgba(255,255,255,0.08);color:var(--sidebar-text);font-size:11px;font-weight:600;padding:4px 12px;border-radius:6px">58 → 77 collaborateurs (+19 ETP)</span>
-              <span style="background:rgba(255,255,255,0.08);color:var(--sidebar-text);font-size:11px;font-weight:600;padding:4px 12px;border-radius:6px">4 phases · 12 mois</span>
+              <span style="background:rgba(255,255,255,0.08);color:var(--sidebar-text);font-size:11px;font-weight:600;padding:4px 12px;border-radius:6px">4 phases · 15 mois</span>
               <span style="background:rgba(255,255,255,0.08);color:var(--sidebar-text);font-size:11px;font-weight:600;padding:4px 12px;border-radius:6px">Budget : 3 000 €</span>
               <span style="background:rgba(255,255,255,0.08);color:var(--sidebar-text);font-size:11px;font-weight:600;padding:4px 12px;border-radius:6px">Canaux existants prioritaires</span>
             </div>
           </div>
         </div>
-
         <!-- 4 messages clés -->
         <div class="card" style="margin-bottom:24px">
           <div class="card-header">
@@ -1108,7 +1025,6 @@ tbody tr:hover { background: #F8FAFC; }
             </div>
           </div>
         </div>
-
         <!-- Cartographie parties prenantes -->
         <div class="card" style="margin-bottom:24px">
           <div class="card-header">
@@ -1175,15 +1091,13 @@ tbody tr:hover { background: #F8FAFC; }
             ⚠️ <strong>Focus critique :</strong> les 6 commerciaux historiques concentrent 60 % de l'effort de communication sur les 6 premiers mois. Chaque commercial historique devient mentor d'un nouveau recruté et bénéficie du parcours "Ambassadeur éthique" certifiant.
           </div>
         </div>
-
         <!-- 4 phases timeline -->
         <div class="card" style="margin-bottom:24px">
           <div class="card-header">
-            <span class="card-title">Plan de déploiement - 4 phases · 12 mois</span>
+            <span class="card-title">Plan de déploiement - 4 phases · 15 mois</span>
           </div>
           <div class="card-body-padded">
             <div class="phases-timeline">
-
               <div class="phase-item">
                 <div class="phase-item-header">
                   <span class="phase-pill" style="background:var(--accent)">Phase 1</span>
@@ -1208,7 +1122,6 @@ tbody tr:hover { background: #F8FAFC; }
                   </div>
                 </div>
               </div>
-
               <div class="phase-item">
                 <div class="phase-item-header">
                   <span class="phase-pill" style="background:var(--accent2)">Phase 2</span>
@@ -1238,7 +1151,6 @@ tbody tr:hover { background: #F8FAFC; }
                   </div>
                 </div>
               </div>
-
               <div class="phase-item">
                 <div class="phase-item-header">
                   <span class="phase-pill" style="background:var(--accent-orange)">Phase 3</span>
@@ -1252,8 +1164,8 @@ tbody tr:hover { background: #F8FAFC; }
                     <div class="pac-meta"><span class="pac-badge pac-badge-format">Email + newsletter</span></div>
                   </div>
                   <div class="phase-action-card">
-                    <div class="pac-title">M2 - Dépôt AO HospitalNet Belgique</div>
-                    <div class="pac-desc">« Notre premier AO structuré est soumis. » Mise en valeur des 6 contributeurs nommés. Signal de fierté collective.</div>
+                    <div class="pac-title">M2 - Préparation AO HospitalNet Belgique</div>
+                    <div class="pac-desc">Coordination de la réponse à l'AO HospitalNet. Dépôt prévu septembre 2025 (M6). Mise en valeur des 6 contributeurs nommés dans la Flash Veille.</div>
                     <div class="pac-meta"><span class="pac-badge pac-badge-format">Newsletter + Slack</span></div>
                   </div>
                   <div class="phase-action-card">
@@ -1273,7 +1185,6 @@ tbody tr:hover { background: #F8FAFC; }
                   </div>
                 </div>
               </div>
-
               <div class="phase-item">
                 <div class="phase-item-header">
                   <span class="phase-pill" style="background:var(--sidebar-bg)">Phase 4</span>
@@ -1282,7 +1193,7 @@ tbody tr:hover { background: #F8FAFC; }
                 </div>
                 <div class="phase-actions">
                   <div class="phase-action-card">
-                    <div class="pac-title">Bilan d'étape 12 mois</div>
+                    <div class="pac-title">Bilan d'étape 15 mois</div>
                     <div class="pac-desc">KPI atteints vs plan. Écarts analysés. Leçons apprises. Recommandations pour les vagues 2 et 3.</div>
                     <div class="pac-meta"><span class="pac-badge pac-badge-format">Rapport 5 pages → DG</span></div>
                   </div>
@@ -1298,11 +1209,9 @@ tbody tr:hover { background: #F8FAFC; }
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
-
         <!-- KPI de succès -->
         <div class="card" style="margin-bottom:24px">
           <div class="card-header">
@@ -1333,7 +1242,6 @@ tbody tr:hover { background: #F8FAFC; }
             </div>
           </div>
         </div>
-
         <!-- Budget -->
         <div class="card">
           <div class="card-header">
@@ -1346,21 +1254,21 @@ tbody tr:hover { background: #F8FAFC; }
                 <tr><th>Poste</th><th>Coût</th><th>Fréquence</th><th>Justification</th></tr>
               </thead>
               <tbody>
-                <tr><td>Conception supports graphiques (affiches, infographies, gabarits)</td><td><strong>1 200 €</strong></td><td>Ponctuel</td><td>Posters A2, charte visuelle projet, deck kick-off</td></tr>
-                <tr><td>Événementiel interne (kick-off + 3 plénières trimestrielles)</td><td><strong>1 200 €</strong></td><td>4 événements/an</td><td>Signal fort de lancement + rituels de cohésion</td></tr>
-                <tr><td>Goodies « Ambassadeurs éthiques » (carnets sérigraphiés)</td><td><strong>400 €</strong></td><td>12 unités</td><td>Reconnaissance symbolique, fédération de la communauté</td></tr>
-                <tr><td>Outils numériques (Notion licences + templates sondages)</td><td><strong>200 €</strong></td><td>Annuel</td><td>FAQ vivante, plateforme feedback anonyme</td></tr>
-                <tr style="background:#F8FAFC"><td><strong>TOTAL</strong></td><td><strong>3 000 €</strong></td><td>12 mois</td><td><strong>0,02 % du CA cible 2025 (14,5 M€)</strong></td></tr>
+                <tr><td>Kick-off de lancement (réunion plénière)</td><td><strong>800 €</strong></td><td>Ponctuel</td><td>Présentation du projet à l'ensemble des collaborateurs</td></tr>
+                <tr><td>Posters A2 - Trajectoire NGL 2025–2028</td><td><strong>400 €</strong></td><td>4 exemplaires</td><td>Présence visuelle quotidienne dans les espaces communs</td></tr>
+                <tr><td>Templates de communication (gabarits Notion / slides)</td><td><strong>300 €</strong></td><td>Ponctuel</td><td>Standardisation des supports de communication interne</td></tr>
+                <tr><td>Bilan de mi-parcours (rapport + présentation)</td><td><strong>500 €</strong></td><td>Ponctuel</td><td>Rapport 5 pages → DG + présentation plénière</td></tr>
+                <tr><td>Séance Q&A anonyme (FAQ interne 10 questions)</td><td><strong>200 €</strong></td><td>Ponctuel</td><td>Réponses aux questions sensibles collaborateurs</td></tr>
+                <tr><td>Base documentaire partagée (Wiki / Notion)</td><td><strong>800 €</strong></td><td>Annuel</td><td>FAQ vivante, plateforme feedback et ressources RH</td></tr>
+                <tr><td>Newsletter mensuelle Flash Veille</td><td><strong>0 €</strong></td><td>Mensuel</td><td>Canal existant, sans surcoût</td></tr>
+                <tr style="background:#F8FAFC"><td><strong>TOTAL</strong></td><td><strong>3 000 €</strong></td><td>15 mois</td><td><strong>0,02 % du CA cible 2025 (14,5 M€)</strong></td></tr>
               </tbody>
             </table>
           </div>
         </div>
-
       </div><!-- /com-interne -->
-
       <!-- ========== EXTERNE ========== -->
       <div class="com-section" id="com-externe">
-
         <!-- Bannière -->
         <div style="background:linear-gradient(135deg,#0F3460,#16213E);border-radius:12px;padding:20px 28px;margin-bottom:24px;display:flex;align-items:flex-start;gap:20px">
           <div style="font-size:32px;flex-shrink:0">🌐</div>
@@ -1375,14 +1283,12 @@ tbody tr:hover { background: #F8FAFC; }
             </div>
           </div>
         </div>
-
         <!-- Message central externe -->
         <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:24px;border-left:4px solid var(--accent)">
           <div style="font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Message central externe</div>
           <div style="font-size:16px;font-weight:700;color:var(--text-primary);font-style:italic;line-height:1.5">« NGL est le partenaire IA des organisations publiques qui ne veulent pas choisir entre performance et conformité. »</div>
           <div style="font-size:12px;color:var(--text-secondary);margin-top:8px;line-height:1.5">CLARITY est la seule solution IA explicable, auditée ISO 42001 et certifiable CE IIa, conçue pour les AO high-risk du secteur public européen. La conformité n'est pas un frein - c'est l'avantage décisif de NGL.</div>
         </div>
-
         <!-- 3 cibles externes -->
         <div class="card" style="margin-bottom:24px">
           <div class="card-header">
@@ -1414,7 +1320,6 @@ tbody tr:hover { background: #F8FAFC; }
             </div>
           </div>
         </div>
-
         <!-- 3 phases externes -->
         <div class="card" style="margin-bottom:24px">
           <div class="card-header">
@@ -1422,7 +1327,6 @@ tbody tr:hover { background: #F8FAFC; }
           </div>
           <div class="card-body-padded">
             <div class="phases-timeline">
-
               <div class="phase-item">
                 <div class="phase-item-header">
                   <span class="phase-pill" style="background:var(--accent)">Phase 1</span>
@@ -1447,7 +1351,6 @@ tbody tr:hover { background: #F8FAFC; }
                   </div>
                 </div>
               </div>
-
               <div class="phase-item">
                 <div class="phase-item-header">
                   <span class="phase-pill" style="background:var(--accent2)">Phase 2</span>
@@ -1472,7 +1375,6 @@ tbody tr:hover { background: #F8FAFC; }
                   </div>
                 </div>
               </div>
-
               <div class="phase-item" style="padding-bottom:0">
                 <div class="phase-item-header">
                   <span class="phase-pill" style="background:var(--accent-orange)">Phase 3</span>
@@ -1497,11 +1399,9 @@ tbody tr:hover { background: #F8FAFC; }
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
-
         <!-- Tableau canaux externes -->
         <div class="card" style="margin-bottom:24px">
           <div class="card-header">
@@ -1523,7 +1423,6 @@ tbody tr:hover { background: #F8FAFC; }
             </table>
           </div>
         </div>
-
         <!-- Budget externe -->
         <div class="card">
           <div class="card-header">
@@ -1551,15 +1450,10 @@ tbody tr:hover { background: #F8FAFC; }
             ℹ️ <strong>Note :</strong> Ce budget est construit en cohérence avec le budget marketing global de 350 k€ (3 % CA 2025) défini en Mission 2. La communication externe représente ici environ 5,4 % de cette enveloppe - le solde couvrant les actions commerciales directes (salaires, frais terrain, CRM).
           </div>
         </div>
-
       </div><!-- /com-externe -->
-
     </div><!-- /tab-plancom -->
-
-
     <!-- ====== TAB: ÉQUIPE & RÉSILIENCE ====== -->
     <div class="tab-content" id="tab-crm">
-
       <!-- KPIs équipe -->
       <div class="kpi-grid">
         <div class="kpi-card">
@@ -1583,10 +1477,8 @@ tbody tr:hover { background: #F8FAFC; }
           <div class="kpi-sub kpi-up">↑ Seuil GO : 60 pts</div>
         </div>
       </div>
-
       <!-- Suivi onboarding + Scoring AO -->
       <div class="charts-row" style="align-items:stretch">
-
         <!-- Suivi onboarding 30/60/90 - HTML pur -->
         <div class="card" style="flex:1.1">
           <div class="card-header">
@@ -1594,7 +1486,6 @@ tbody tr:hover { background: #F8FAFC; }
             <span style="font-size:11px;color:var(--text-muted)">Vague 1 · T2 2025</span>
           </div>
           <div class="card-body-padded" style="padding:20px 24px;display:flex;flex-direction:column;gap:22px">
-
             <!-- Recrue 1 -->
             <div>
               <div style="display:flex;justify-content:space-between;margin-bottom:8px">
@@ -1620,7 +1511,6 @@ tbody tr:hover { background: #F8FAFC; }
                 <span style="font-size:11px;color:var(--text-muted)">Démarré</span>
               </div>
             </div>
-
             <!-- Recrue 2 -->
             <div>
               <div style="display:flex;justify-content:space-between;margin-bottom:8px">
@@ -1646,7 +1536,6 @@ tbody tr:hover { background: #F8FAFC; }
                 <span style="font-size:11px;color:var(--text-muted)">Non démarré</span>
               </div>
             </div>
-
             <!-- Recrue 3 -->
             <div>
               <div style="display:flex;justify-content:space-between;margin-bottom:8px">
@@ -1672,7 +1561,6 @@ tbody tr:hover { background: #F8FAFC; }
                 <span style="font-size:11px;color:var(--text-muted)">Non démarré</span>
               </div>
             </div>
-
             <!-- Recrue 4 -->
             <div>
               <div style="display:flex;justify-content:space-between;margin-bottom:8px">
@@ -1698,10 +1586,8 @@ tbody tr:hover { background: #F8FAFC; }
                 <span style="font-size:11px;color:var(--text-muted)">Non démarré</span>
               </div>
             </div>
-
           </div>
         </div>
-
         <!-- Scoring go/no-go - CSS pur -->
         <div class="card" style="flex:1">
           <div class="card-header">
@@ -1709,7 +1595,6 @@ tbody tr:hover { background: #F8FAFC; }
             <span style="font-size:11px;color:var(--text-muted)">Pipeline actif · seuil GO = 60 pts</span>
           </div>
           <div class="card-body-padded" style="padding:20px 24px;display:flex;flex-direction:column;gap:16px">
-
             <!-- Légende -->
             <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:4px">
               <span style="font-size:11px;display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:#1ABC9C;border-radius:2px;display:inline-block"></span>GO automatique ≥ 75</span>
@@ -1717,7 +1602,6 @@ tbody tr:hover { background: #F8FAFC; }
               <span style="font-size:11px;display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:#E67E22;border-radius:2px;display:inline-block"></span>Discussion DG 45–59</span>
               <span style="font-size:11px;display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:#E74C3C;border-radius:2px;display:inline-block"></span>NO-GO &lt; 45</span>
             </div>
-
             <!-- AO 1 -->
             <div>
               <div style="display:flex;justify-content:space-between;margin-bottom:5px">
@@ -1732,7 +1616,7 @@ tbody tr:hover { background: #F8FAFC; }
             <!-- AO 2 -->
             <div>
               <div style="display:flex;justify-content:space-between;margin-bottom:5px">
-                <span style="font-size:12px;font-weight:600;color:var(--text-primary)">AO Rectorat Lyon (DAS 2)</span>
+                <span style="font-size:12px;font-weight:600;color:var(--text-primary)">Min. Éducation — Orientation prédictive (DAS 2)</span>
                 <span style="font-size:12px;font-weight:700;color:#2E86C1">74/100</span>
               </div>
               <div style="position:relative;height:12px;background:#EEF2F7;border-radius:6px">
@@ -1743,7 +1627,7 @@ tbody tr:hover { background: #F8FAFC; }
             <!-- AO 3 -->
             <div>
               <div style="display:flex;justify-content:space-between;margin-bottom:5px">
-                <span style="font-size:12px;font-weight:600;color:var(--text-primary)">CLARA Justice DE (DAS 3)</span>
+                <span style="font-size:12px;font-weight:600;color:var(--text-primary)">Agence fédérale — Justice DACH (DAS 3)</span>
                 <span style="font-size:12px;font-weight:700;color:#2E86C1">68/100</span>
               </div>
               <div style="position:relative;height:12px;background:#EEF2F7;border-radius:6px">
@@ -1754,7 +1638,7 @@ tbody tr:hover { background: #F8FAFC; }
             <!-- AO 4 -->
             <div>
               <div style="display:flex;justify-content:space-between;margin-bottom:5px">
-                <span style="font-size:12px;font-weight:600;color:var(--text-primary)">Horizon EU ONG (DAS 4)</span>
+                <span style="font-size:12px;font-weight:600;color:var(--text-primary)">Chambéry Agglo — Ville durable IA (DAS 4)</span>
                 <span style="font-size:12px;font-weight:700;color:#2E86C1">63/100</span>
               </div>
               <div style="position:relative;height:12px;background:#EEF2F7;border-radius:6px">
@@ -1765,7 +1649,7 @@ tbody tr:hover { background: #F8FAFC; }
             <!-- AO 5 -->
             <div>
               <div style="display:flex;justify-content:space-between;margin-bottom:5px">
-                <span style="font-size:12px;font-weight:600;color:var(--text-primary)">Ville Durable ES (DAS 4)</span>
+                <span style="font-size:12px;font-weight:600;color:var(--text-primary)">Banque Mutualiste — EaaS KYC (EaaS)</span>
                 <span style="font-size:12px;font-weight:700;color:#E67E22">55/100</span>
               </div>
               <div style="position:relative;height:12px;background:#EEF2F7;border-radius:6px">
@@ -1776,7 +1660,7 @@ tbody tr:hover { background: #F8FAFC; }
             <!-- AO 6 -->
             <div>
               <div style="display:flex;justify-content:space-between;margin-bottom:5px">
-                <span style="font-size:12px;font-weight:600;color:var(--text-primary)">AO Fintech KYC (EaaS)</span>
+                <span style="font-size:12px;font-weight:600;color:var(--text-primary)">Logroño — IA sobriété énergétique (Ref.)</span>
                 <span style="font-size:12px;font-weight:700;color:#E74C3C">48/100</span>
               </div>
               <div style="position:relative;height:12px;background:#EEF2F7;border-radius:6px">
@@ -1784,11 +1668,9 @@ tbody tr:hover { background: #F8FAFC; }
                 <div style="position:absolute;top:-2px;left:60%;height:16px;width:2px;background:#E74C3C;opacity:0.6"></div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
-
       <!-- Matrice de binômage -->
       <div class="card" style="margin-bottom:24px">
         <div class="card-header">
@@ -1852,7 +1734,6 @@ tbody tr:hover { background: #F8FAFC; }
           </table>
         </div>
       </div>
-
       <!-- KPIs résilience -->
       <div class="card">
         <div class="card-header">
@@ -1916,18 +1797,14 @@ tbody tr:hover { background: #F8FAFC; }
           </table>
         </div>
       </div>
-
     </div><!-- /tab-crm -->
-
   </main>
 </div>
-
 <!-- FOOTER -->
 <footer class="footer">
   <span>© 2025 Neurogenia-Lumen - Direction Stratégie et Marché</span>
   <span>Confidentiel - Données internes</span>
 </footer>
-
 <script>
 // ====== NAV ======
 function switchTab(tabId, el) {
@@ -1935,7 +1812,6 @@ function switchTab(tabId, el) {
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('tab-' + tabId).classList.add('active');
   el.classList.add('active');
-
   const titles = {
     pipeline: "Pipeline des appels d'offres",
     performance: "Performance commerciale",
@@ -1944,14 +1820,11 @@ function switchTab(tabId, el) {
     crm: "Suivi collaborateurs"
   };
   document.getElementById('topbar-title').textContent = titles[tabId];
-
   // Init charts lazily
   if (tabId === 'performance' && !window.chartsInit) {
     initCharts();
     window.chartsInit = true;
   }
-
-
   // Reset com sub-tabs when navigating away and back
   if (tabId === 'plancom') {
     const activeComSection = document.querySelector('.com-section.active');
@@ -1960,29 +1833,24 @@ function switchTab(tabId, el) {
       document.querySelectorAll('.com-tab-btn')[0].classList.add('active');
     }
   }
-
   // Close mobile sidebar
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('overlay').classList.remove('open');
 }
-
 function switchComTab(sectionId, btn) {
   document.querySelectorAll('.com-section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.com-tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('com-' + sectionId).classList.add('active');
   btn.classList.add('active');
 }
-
 function toggleSidebar() {
   document.getElementById('sidebar').classList.toggle('open');
   document.getElementById('overlay').classList.toggle('open');
 }
-
 // ====== DATE ======
 const now = new Date();
 const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 document.getElementById('current-date').textContent = now.toLocaleDateString('fr-FR', opts);
-
 // ====== CHARTS ======
 function initCharts() {
   // CA stacked bar
@@ -2011,7 +1879,6 @@ function initCharts() {
       }
     }
   });
-
   // Clients line
   const ctxCl = document.getElementById('chartClients').getContext('2d');
   new Chart(ctxCl, {
@@ -2048,6 +1915,5 @@ function initCharts() {
   });
 }
 </script>
-
 </body>
 </html>
